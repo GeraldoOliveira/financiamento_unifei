@@ -15,7 +15,6 @@
         echo($pesquisa);
         if (isset($_POST["submit"])) {
             $sql = "UPDATE usuario SET login = '" . $_POST['login'] . "', senha = '" . $_POST['senha'] . "', pais = '" . $_POST['pais'] . "', cidade = '" . $_POST['cidade'] . "', estado = '" . $_POST['estado'] . "', endereco = '" . $_POST['endereco'] . "', email = '" . $_POST['email'] . "', categoria = '" . $_POST['categoria'] . "' WHERE usuario.login = '" . $pesquisa . "'";
-            echo($sql);
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
         } else {
