@@ -32,7 +32,7 @@
                         ?>
                         <tr>
                             <td>
-                                <a href="exibir_usuario.php?nome=<?php echo $row['nome_completo'];?>"><?php echo $row['nome_completo']; ?></a>
+                                <a href="exibir_usuario.php?nome=<?php echo $row['nome_completo']; ?>"><?php echo $row['nome_completo']; ?></a>
                             </td>
                             <td>
                                 <?php echo $row['login']; ?>
