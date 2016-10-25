@@ -12,12 +12,14 @@
         <?php
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
-            $pesquisa = $_GET["valor"];
-            $sql = "UPDATE projeto_candidato SET nome_projeto = '" . $_POST['nome_proj'] . "', categoria_projeto = '" . $_POST['categoria'] . "', duracao_projet = '" . $_POST['duracao'] . "', valor_projeto = '" . $_POST['valor'] . "' WHERE usuario.login = '" . $pesquisa . "'";
-            echo($sql);
+            $pesquisa = $_POST["valor"];
+            $sql = "UPDATE projeto_candidato SET nome_projeto = '" . $_POST['nome_proj'] . "', categoria_projeto = '" . $_POST['categoria'] . "', duracao_projeto = '" . $_POST['duracao'] . "', valor_projeto = '" . $_POST['valor'] . "' WHERE nome_projeto = '" . $pesquisa . "'";
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
-        } else {
+            ?><h3>Os dados foram alterados com sucesso.</h3>
+            <h4><a href="alterar_projcandidato.php">Nova alteração</a>
+            <?php
+            } else {
                     $pesquisa = $_GET['nome'];
                     ?>
         
@@ -55,7 +57,7 @@
                     <br/>
                     <label  class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                        <input type="hidden" value="<?php echo $pesquisa ?> " name="valor">
+                        <input type="hidden" value="<?php echo $pesquisa ?>" name="valor">
                         <input type="submit" name="submit" /> <input type="reset" onclick=''/>
                     </div>
                 </div>
