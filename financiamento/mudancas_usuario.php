@@ -11,13 +11,15 @@
         <script src="js/bootstrap.min.js"></script>
         <?php
         include "../financiamento/conexao.php";
-        $pesquisa = $_GET["nome"];
-        echo($pesquisa);
+
         if (isset($_POST["submit"])) {
-            $sql = "UPDATE usuario SET login = '" . $_POST['login'] . "', senha = '" . $_POST['senha'] . "', pais = '" . $_POST['pais'] . "', cidade = '" . $_POST['cidade'] . "', estado = '" . $_POST['estado'] . "', endereco = '" . $_POST['endereco'] . "', email = '" . $_POST['email'] . "', categoria = '" . $_POST['categoria'] . "' WHERE usuario.login = '" . $pesquisa . "'";
+            $pesquisa = $_POST["nome"];
+            $sql = "UPDATE usuario SET login = '" . $_POST['login'] . "', senha = '" . $_POST['senha'] . "', pais = '" . $_POST['pais'] . "', cidade = '" . $_POST['cidade'] . "', estado = '" . $_POST['estado'] . "', endereco = '" . $_POST['endereco'] . "', email = '" . $_POST['email'] . "', categoria = '" . $_POST['categoria'] . "' WHERE login = '" . $pesquisa . "'";
+            echo($sql);
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
         } else {
+            $pesquisa = $_GET["nome"];
             ?>
             <h3>Entre com seus dados</h3>
             <form id="cadastra_user"action="mudancas_usuario.php" method="post" class="form-horizontal">
@@ -77,6 +79,7 @@
                     <br/>
                     <label  class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
+                        <input type="hidden" value="<?php echo $pesquisa ?>" name="nome">
                         <input type="submit" name="submit" /> <input type="reset"/>
                     </div>
                 </div>

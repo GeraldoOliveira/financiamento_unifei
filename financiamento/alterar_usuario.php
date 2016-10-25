@@ -17,9 +17,11 @@
             
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 if($_POST['senha'] == $row['senha']){?>
-        <a href="mudancas_usuario.php?nome=<?php echo $row['login']; ?>"><?php echo $row['login']; ?></a>
-                <?php }else{
-                    header('Location: alterar_usuario.php');
+                    <a href="mudancas_usuario.php?nome=<?php echo $row['login']; ?>">Alterar dados</a>
+                <?php } else{
+                    header('Location: alterar_usuario.php'); ?>
+                    <script> alert("Senha incorreta") </script>
+                <?php 
                 }
             }  
         } else {
