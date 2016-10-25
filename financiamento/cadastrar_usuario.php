@@ -36,13 +36,14 @@
                     $_POST["nascimento"] . "','" .
                     $_POST["email"] . "','" .
                     $_POST["tipo"] . "','" .
-                    $_POST["categoria"] . "' )";
+                    $_POST["categoria"] . "', 'ativo' )";
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
             ?>
             <h3>Usuário cadastrado com sucesso.</h3>
             <h4><a href="cadastrar_usuario.php">Novo cadastro</a>
                 <h4><a href="index.php">Voltar</a></h4>
+        <?php
         } else {
             ?>
             <h3>Entre com seus dados</h3>
