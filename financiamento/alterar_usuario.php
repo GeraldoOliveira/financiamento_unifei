@@ -26,7 +26,7 @@
             }  
         } else {
             ?>
-            <h3>&nbsp;Entre com os filtros</h3>
+            <h3>&nbsp;Entre com os dados a pesquisar</h3>
             <form id="consulta_user"action="alterar_usuario.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Login</label>

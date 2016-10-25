@@ -35,6 +35,7 @@
         $bdpass = $row['senha'];
         $user = $row['nome_completo'];
         if($pass == $bdpass){
+            header("Location:menu_inicial.php")
             ?><h4>Login realizado com sucesso. Seja bem-vindo <?php echo $user; ?>.</h4>
         <?php }else
             ?>  Senha ou login incorreto. Tente novamente.<br><br>

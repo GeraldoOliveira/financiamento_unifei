@@ -46,7 +46,7 @@
         <?php
         } else {
             ?>
-            <h3>Entre com seus dados</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entre com os dados do usuário</h3>
             <form id="cadastra_user"action="cadastrar_usuario.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Login</label>

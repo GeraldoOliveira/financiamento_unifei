@@ -44,7 +44,7 @@
             <?php
         } else {
             ?>
-            <h3>&nbsp;Entre com os filtros</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entre com os dados do usuario</h3>
             <form id="consulta_user"action="consultar_usuario.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nome</label>
