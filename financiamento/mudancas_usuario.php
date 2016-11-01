@@ -15,9 +15,13 @@
         if (isset($_POST["submit"])) {
             $pesquisa = $_POST["nome"];
             $sql = "UPDATE usuario SET login = '" . $_POST['login'] . "', senha = '" . $_POST['senha'] . "', pais = '" . $_POST['pais'] . "', cidade = '" . $_POST['cidade'] . "', estado = '" . $_POST['estado'] . "', endereco = '" . $_POST['endereco'] . "', email = '" . $_POST['email'] . "', categoria = '" . $_POST['categoria'] . "' WHERE login = '" . $pesquisa . "'";
-            echo($sql);
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
+            ?><h3>Os dados foram alterados com sucesso.</h3>
+            <h4><a href="alterar_usuario.php">Nova alteração</a>
+                <br>
+                <h4><a href="index.php">Voltar</a></h4>
+                <?php 
         } else {
             $pesquisa = $_GET["nome"];
             ?>

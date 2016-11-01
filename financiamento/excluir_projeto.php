@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <link href="css/style.css" rel="stylesheet">
-        <title>Consultar Usuarios</title>
+        <title>Excluir Projeto</title>
     </head>
     <body> 
         <script src="js/jquery.min.js"></script>
@@ -39,7 +39,7 @@
                                 <?php echo $row['cod_projeto']; ?> 
                             </td>
                             <td>
-                                <?php echo $row['nome_projeto']; ?>
+                                <a href="confirmar_exclusao.php?nome=<?php echo $row['cod_projeto']; ?>"><?php echo $row['nome_projeto']; ?></a>
                             </td>
                             <td>
                                 <?php echo $row['categoria_projeto']; ?> 
@@ -60,8 +60,8 @@
             <?php
         } else {
             ?>
-            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entre com os dados do projeto</h3>
-            <form id="consulta_user"action="listar_projcandidato.php" method="post" class="form-horizontal">
+            <h3>&nbsp;Entre com os filtros</h3>
+            <form id="consulta_user"action="excluir_projeto.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Código</label>
                     <div class="col-sm-6">

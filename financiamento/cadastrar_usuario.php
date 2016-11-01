@@ -36,15 +36,17 @@
                     $_POST["nascimento"] . "','" .
                     $_POST["email"] . "','" .
                     $_POST["tipo"] . "','" .
-                    $_POST["categoria"] . "' )";
+                    $_POST["categoria"] . "', 'ativo' )";
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
-            echo"<h3>Obrigado. Seus dados foram inseridos</h3> \n";
-            echo'<p><a href="cadastrar_usuario.php">Inserir outro usuário.</a></p>' . "\n";
-            echo'<p><a href="data_out.php">Veja a lista de alunos</a></p>' . "\n";
+            ?>
+            <h3>Usuário cadastrado com sucesso.</h3>
+            <h4><a href="cadastrar_usuario.php">Novo cadastro</a>
+                <h4><a href="index.php">Voltar</a></h4>
+        <?php
         } else {
             ?>
-            <h3>Entre com seus dados</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entre com os dados do usuário</h3>
             <form id="cadastra_user"action="cadastrar_usuario.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Login</label>
