@@ -1,8 +1,4 @@
-
-<h3>O projeto não foi excluído.</h3>
-<h4><a href="excluir_projeto.php.php">Excluir projeto</a></h4>
-<br>
-<h4><a href="menu_inicial.php">Voltar</a></h4><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,25 +8,35 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-              rel="stylesheet" type="text/css">
-        <title>Cadastrar Projeto Candidato</title>
+              rel="stylesheet" type="text/css">  
+        <title>Exclusão Efetuada</title>
     </head>
     <body> 
         <?php
         session_start();
         include_once 'header.php';
         include_once 'menu.php';
-        include "../financiamento/conexao.php";
-        $cod = $_GET["nome"];
         ?>
         <div class="section" style="min-height: 600px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>O projeto não foi excluído.</h3>
-                        <h4><a href="excluir_projeto.php.php">Excluir projeto</a></h4>
-                        <br>
-                        <h4><a href="menu_inicial.php">Voltar</a></h4>
+                        <?php
+                        include "../financiamento/conexao.php";
+                        $sql = "UPDATE usuario SET status = 0 WHERE login = '" . $_SESSION['login'] . "'";
+                        mysqli_query($con, $sql);
+                        ?>
+                        <h4>Usuário desativado com sucesso.</h4><br>
+                        <h4>Para reativá-lo, realize o login novamente.</h4>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <a class="btn btn-primary" href="index.php">Sair</a>
+                            </div>
+                        </div>
+                        <?php
+                        session_unset();
+                        session_destroy();
+                        ?>
                     </div>
                 </div>
             </div>

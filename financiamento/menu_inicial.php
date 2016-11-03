@@ -1,40 +1,37 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Financiamento UNIFEI</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+              rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+              rel="stylesheet" type="text/css">
     </head>
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <br><h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seja bem-vindo</h4>
-        <br>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Usuário
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="cadastrar_usuario.php">Adicionar Usuário</a></li>
-                <li><a href="consultar_usuario.php">Listar Usuários</a></li>
-                <li><a href="alterar_usuario.php">Alterar Usuários</a></li>
-                <li><a href="desativar_usuario.php">Desativar seu usuário</a></li>
-            </ul>
+        <?php
+        session_start();
+        include_once 'header.php';
+        include_once 'menu.php';
+        ?>
+        <div class="section" style="min-height: 600px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <br><h1>Seja bem-vindo <?php echo $_SESSION["nome"]; ?></h1>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/6uv2yKtjo3I"
+                                    allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Projeto Candidato
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="cadastrar_projcandidato.php">Adicionar Projeto Candidato</a></li>
-                <li><a href="listar_projcandidato.php">Listar Projetos Candidatos</a></li>
-                <li><a href="alterar_projcandidato.php">Alterar Projeto Candidato</a></li>
-                <li><a href="excluir_projeto.php">Excluir Projeto Candidato</a></li>
-            </ul>
-        </div>
+        <?php
+        include_once 'footer.php';
+        ?>
     </body>
 </html>

@@ -28,9 +28,7 @@
     </head>
     <body> 
         <?php
-        session_start();
         include_once 'header.php';
-        include_once 'menu.php';
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
             ?>
@@ -39,6 +37,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php
+                            session_start();
+                            $user = $_POST['login'];
+                            $pesquisa = $_POST['nome'];
+                            $_SESSION['nome'] = $pesquisa;
+                            $_SESSION['login'] = $user;
                             $data = date_create($_POST['nascimento']);
                             $c_data = date_format($data, "Y/m/d");
                             $sql = "INSERT INTO usuario VALUES('" . $_POST["login"] . "','" .
@@ -54,13 +57,10 @@
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
-                            <h3>Usuário cadastrado com sucesso.</h3><br><br>
+                            <h3>Usuário cadastrado com sucesso.</h3>
                             <div class="row">
-                                <div class="col-md-2">
-                                    <a class="btn btn-primary" href="cadastrar_usuario.php">Novo cadastro</a>
-                                </div>
-                                <div class="col-md-10">
-                                    <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
+                                <div class="col-md-11">
+                                    <a class="btn btn-primary" href="menu_inicial.php">Logar</a>
                                 </div>
                             </div>
 
@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Entre com os dados do usuário</h3>
-                            <form id="cadastra_user"action="cadastrar_usuario.php" method="post" class="form-horizontal">
+                            <form id="cadastra_user"action="cadastrarUsuario2.php" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Login</label>
                                     <div class="col-sm-6">
@@ -134,7 +134,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Data de nascimento</label>
                                     <div class="col-sm-6">
-                                        <input type="date" value="dd-mm-aaaa"class = "form-control" name="nascimento" />
+                                        <input type="date" value="dd-mm-aaaa"class ="form-control" name="nascimento" />
                                     </div>
                                 </div>
                                 <div class="form-group">
