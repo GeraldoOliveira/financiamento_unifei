@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Consultar Projetos</title>
+        <title>Avaliar Projetos Candidatos</title>
     </head>
     <body> 
         <?php
@@ -24,15 +24,15 @@
                 $cat = $_POST["categoria"];
             }
             if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat == "") {
-                $sql = "SELECT * FROM projeto_candidato";
+                $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato'";
             } else if ($_POST["cod"] != "" && $_POST["nome_proj"] == "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST["cod"] . "";
+                $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST["cod"] . " && status_projeto = 'candidato'";
             } else if ($_POST["cod"] == "" && $_POST["nome_proj"] != "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "'";
+                $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "' && status_projeto = 'candidato'";
             } else if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat != null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $cat . "'";
+                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $cat . "' && status_projeto = 'candidato'";
             } else {
-                $sql = "SELECT * FROM projeto_candidato";
+                $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato'";
             }
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>
@@ -63,7 +63,7 @@
                                                 <?php echo $row['cod_projeto']; ?> 
                                             </td>
                                             <td>
-                                                <?php echo $row['nome_projeto']; ?>
+                                                <a href="avaliacao_proj.php?categoria=<?php echo $row['categoria_projeto']; ?>&codigo=<?php echo $row['cod_projeto']; ?>"><?php echo $row['nome_projeto']; ?></a>
                                             </td>
                                             <td>
                                                 <?php echo $row['categoria_projeto']; ?> 
@@ -81,7 +81,7 @@
                                                 <?php echo $row['descricao_projeto']; ?>
                                             </td>
                                             <td>
-                                                <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="200px" width="200px">
+                                                <?php echo $row['imagem_projeto']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $row['video_projeto']; ?>
@@ -101,25 +101,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Entre com os dados do projeto</h3>
-                            <form id="consulta_user"action="listar_projcandidato.php" method="post" class="form-horizontal">
+                            <h3>Entre com os dados do projeto a consultar</h3>
+                            <form id="consulta_user"action="avaliar_projcandidato.php" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Código</label>
                                     <div class="col-sm-6">
-                                        <input type="number" class = "form-control" name="cod" /> 
+                                        <input type="number" class = "form-control" name="cod" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Nome do Projeto</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="nome_proj" /> 
+                                        <input type="text" class = "form-control" name="nome_proj" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Categoria</label>
                                     <div class="col-sm-6" >
                                         <input type="hidden" value="vazio" id="vazio" name="categoria" checked>
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
+                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
                                         <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                         <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                         <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
@@ -130,7 +130,7 @@
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <button type="submit" name="submit" class="btn btn-primary">Buscar</button>
+                                            <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
                                         </div>
                                         <div class="col-md-10">
                                             <button type="reset" class="btn btn-primary">Resetar Campos</button>

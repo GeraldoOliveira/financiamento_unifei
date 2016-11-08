@@ -34,11 +34,7 @@
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
-<<<<<<< HEAD
-                            <h3>O projeto foi cadastrado com sucesso.</h3><br><br>
-=======
                             <h3>O critério foi cadastrado com sucesso.</h3><br><br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
                             <div class="row">
                                 <div class="col-md-1">
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
@@ -64,22 +60,13 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Critério de Avaliação</label>
                                     <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" /> 
-=======
                                         <input type="text" id="pass" class = "form-control" name="criterio_avalia" required/> 
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Categoria</label>
-<<<<<<< HEAD
-                                    <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
-=======
                                     <div class="col-sm-6">
                                         <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
                                         <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                         <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                         <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
@@ -89,11 +76,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Peso do Critério</label>
                                     <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="number" min="0" max="10" class = "form-control" name="valor_criterio" />
-=======
                                         <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" />
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -28,12 +28,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php
-                            $sql = "UPDATE criterio_avaliacao SET criterio = '" . $_POST['criterio_avalia'] . "' , peso = " . $_POST['valor_criterio'] . ", status = " . $_POST['status'] . " WHERE codigo = " . $_POST['codigo'] . "";
-                            echo ($sql);
+                            $data = date('Y-m-d');
+                            $sql = "UPDATE repasse SET valor = " . $_POST['valor'] . ", data = '" . $data . "'";
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
-                            <h3>O critério foi alterado com sucesso.</h3><br><br>
+                            <h3>O valor de repasse foi alterado com sucesso.</h3><br><br>
                             <div class="row">
                                 <div class="col-md-1">
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
@@ -49,8 +49,8 @@
             </div>
             <?php
         } else {
-            $codigo = $_GET["cod"];
-            $sql = "SELECT * FROM criterio_avaliacao WHERE codigo = '" . $codigo . "'";
+            $codigo = $_GET["codigo"];
+            $sql = "SELECT * FROM repasse WHERE cod_repasse = " . $codigo . "";
             $result = mysqli_query($con, $sql); /* executa a query */
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             ?>
@@ -58,25 +58,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Realize as alterações necessárias</h3>
-                            <form id="cadastra_projecandidato"action="alterar_criterioavalia.php" method="post" class="form-horizontal">
+                            <h3>Realize a alteração, se desejar.</h3>
+                            <form id="cadastra_projecandidato"action="alterar_repasse.php" method="post" class="form-horizontal">
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Critério de Avaliação</label>
+                                    <label class="col-sm-2 control-label">Valor do Repasse</label>
                                     <div class="col-sm-6">
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" value="<?php echo $row['criterio'] ?>"/> 
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Peso do Critério</label>
-                                    <div class="col-sm-6">
-                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" value="<?php echo $row['peso'] ?>"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Categoria</label>
-                                    <div class="col-sm-6">
-                                        <input type="radio" id="ativado" value= "1" name="status" <?php if($row['status'] == 1){ ?>checked<?php } ?> /> Ativado<br>
-                                        <input type="radio" id="desativado" value="2" name="status" <?php if($row['status'] == 0){ ?>checked<?php } ?> /> Desativado<br>
+                                        <input type="number" step="0.01" class = "form-control" value="<?php echo $row['valor'];?>" name="valor" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -85,9 +72,6 @@
                                         <div class="col-md-2">
                                             <input type="hidden" value="<?php echo $codigo; ?>" name="codigo">
                                             <button type="submit" name="submit" class="btn btn-primary">Alterar</button>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <button type="reset" class="btn btn-primary">Resetar Campos</button>
                                         </div>
                                     </div>
                                 </div>

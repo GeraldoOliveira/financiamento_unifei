@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Financiamento UNIFEI</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -10,21 +9,33 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
+        <title>Consultar Projetos</title>
     </head>
-    <body>
+    <body> 
         <?php
         session_start();
+        include "../financiamento/conexao.php";
         include_once 'header.php';
         include_once 'menu.php';
+
+        $cod = $_GET['codigo'];
+
+        $sql = "UPDATE projeto_candidato SET status_projeto = 'finalizado' WHERE cod_projeto = " . $cod . "";
+
+        $result = mysqli_query($con, $sql); /* executa a query */
         ?>
         <div class="section" style="min-height: 600px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <br><h1>Seja bem-vindo <?php echo $_SESSION["nome"];?></h1>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/6uv2yKtjo3I"
-                                    allowfullscreen=""></iframe>
+                        <h3>Projeto foi finalizado com sucesso.</h3><br><br>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
+                            </div>
+                            <div class="col-md-11">
+                                <a class="btn btn-primary" href="consulta_projaprov.php">Finalizar outro</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,17 @@
         include_once 'menu.php';
         if (isset($_POST["submit"])) {
             $pesquisa = $_POST["valor"];
-            $sql = "UPDATE projeto_candidato SET nome_projeto = '" . $_POST['nome_proj'] . "', categoria_projeto = '" . $_POST['categoria'] . "', duracao_projeto = '" . $_POST['duracao'] . "', valor_projeto = '" . $_POST['valor'] . "', descricao_projeto = '" . $_POST['descricao'] . "', imagem_projeto = 'sdasdasd', video_projeto = '" . $_POST['video'] . "' WHERE nome_projeto = '" . $pesquisa . "'";
+            if (isset($_FILES['imagem'])) {
+                echo ("FODA SE");
+                $extensao = strtolower(substr($_FILES['imagem']['name'], -4));
+                $novo_nome = md5(time()) . $extensao;
+                $diretorio = "imagens/";
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $novo_nome);
+                $sql = "UPDATE projeto_candidato SET nome_projeto = '" . $_POST['nome_proj'] . "', categoria_projeto = '" . $_POST['categoria'] . "', duracao_projeto = '" . $_POST['duracao'] . "', valor_projeto = '" . $_POST['valor'] . "', descricao_projeto = '" . $_POST['descricao'] . "', imagem_projeto = '" . $novo_nome . "', video_projeto = '" . $_POST['video'] . "' WHERE nome_projeto = '" . $pesquisa . "'";
+            } else {
+                echo ("Foda se");
+                $sql = "UPDATE projeto_candidato SET nome_projeto = '" . $_POST['nome_proj'] . "', categoria_projeto = '" . $_POST['categoria'] . "', duracao_projeto = '" . $_POST['duracao'] . "', valor_projeto = '" . $_POST['valor'] . "', descricao_projeto = '" . $_POST['descricao'] . "', imagem_projeto = '" . $_POST['link'] . "', video_projeto = '" . $_POST['video'] . "' WHERE nome_projeto = '" . $pesquisa . "'";
+            }
             mysqli_query($con, $sql); /* executa a query */
             mysqli_close($con);
             ?>
@@ -49,13 +59,14 @@
         $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $pesquisa . "'";
         $result = mysqli_query($con, $sql); /* executa a query */
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $cat = $row['categoria_projeto'];
         ?>
         <div class="section" style="min-height: 600px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h3>Entre com os dados a serem alterados</h3>
-                        <form id="cadastra_projecandidato"action="mudancas_projcandidato.php" method="post" class="form-horizontal">
+                        <form id="cadastra_projecandidato" action="mudancas_projcandidato.php" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Nome do Projeto</label>
                                 <div class="col-sm-6">
@@ -65,11 +76,11 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Categoria</label>
                                 <div class="col-sm-6" >
-                                    <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
-                                    <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
-                                    <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
-                                    <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
-                                    <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" /> Pequenas Obras<br>
+                                    <input type="radio" id="pesq" value="Pesquisa" name="categoria" <?php if ($cat == 'Pesquisa') { ?> checked <?php } ?>/> Pesquisa<br>
+                                    <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" <?php if ($cat == 'Competição Tecnológica') { ?> checked <?php } ?>/> Competição Tecnológica<br>
+                                    <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" <?php if ($cat == 'Inovação no Ensino') { ?> checked <?php } ?>/> Inovação no Ensino<br>
+                                    <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" <?php if ($cat == 'Manutenção e Reforma') { ?> checked <?php } ?>/> Manutenção e Reforma<br>
+                                    <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" <?php if ($cat == 'Pequenas Obras') { ?> checked <?php } ?>/> Pequenas Obras<br>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -85,23 +96,25 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label class="col-sm-2 control-label">Imagem</label>
-                                    <div class="col-sm-6">
-                                        <input type="image" class = "form-control" name="imagem" value="<?php echo $row['imagem_projeto'] ?>"/>
-                                    </div>
+                                <label class="col-sm-2 control-label">Imagem</label>
+                                <div class="col-sm-6">
+                                    <input type="hidden" name="link" value="<?php echo $row['imagem_projeto'] ?>"/>
+                                    <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="400px" weidth="400px"><br><br>
+                                    <input type="file" name="imagem" />
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Link video</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="video" value="<?php echo $row['video_projeto'] ?>"/>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Link video</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class = "form-control" name="video" value="<?php echo $row['video_projeto'] ?>"/>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Descrição</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="descricao" value="<?php echo $row['descricao_projeto'] ?>"/>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Descrição</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class = "form-control" name="descricao" value="<?php echo $row['descricao_projeto'] ?>"/>
                                 </div>
+                            </div>
                             <div class="form-group">
                                 <br/>
                                 <input type="hidden" value="<?php echo $pesquisa ?>" name="valor">

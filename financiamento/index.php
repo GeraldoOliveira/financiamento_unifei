@@ -32,13 +32,14 @@
         include_once 'header.php';
         if (isset($_POST["submit"])) {
             $pesquisa = $_POST["login"];
-            $sql = "SELECT nome_completo , senha , status  FROM `usuario` WHERE login = '" . $pesquisa . "'";
+            $sql = "SELECT nome_completo , senha , status , tipo FROM `usuario` WHERE login = '" . $pesquisa . "'";
             $result = mysqli_query($con, $sql); /* executa a query */
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $status = $row['status'];
             $pass = $_POST["senha"];
             $bdpass = $row['senha'];
             $user = $row['nome_completo'];
+            $tipo = $row['tipo'];
             if ($pass == $bdpass && $status == 0) {
                 session_start();
                 $_SESSION['nome'] = $user;
@@ -49,6 +50,7 @@
                 session_start();
                 $_SESSION['nome'] = $user;
                 $_SESSION['login'] = $pesquisa;
+                $_SESSION['tipo'] = $tipo;
                 header("Location:menu_inicial.php");
             } else {
                 ?>

@@ -56,7 +56,7 @@
                                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                         ?>
                                         <tr>
-                                            <td><?php echo $nome_proj; ?></td>
+                                            <td><a href="alterar_repasse.php?codigo='<?php echo $row['cod_repasse']; ?>'"><?php echo $nome_proj; ?></a></td>
                                             <td>
                                                 <?php
                                                 $soma = 0;

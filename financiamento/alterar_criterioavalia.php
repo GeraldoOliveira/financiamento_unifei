@@ -29,7 +29,6 @@
                         <div class="col-md-12">
                             <?php
                             $sql = "UPDATE criterio_avaliacao SET criterio = '" . $_POST['criterio_avalia'] . "' , peso = " . $_POST['valor_criterio'] . ", status = " . $_POST['status'] . " WHERE codigo = " . $_POST['codigo'] . "";
-                            echo ($sql);
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
