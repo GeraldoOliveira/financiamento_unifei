@@ -6,6 +6,10 @@
             <name>financiamento</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+<<<<<<< HEAD
+=======
+            <word>Ativado</word>
+>>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
             <word>Avaliação</word>
             <word>Critério</word>
         </spellchecker-wordlist>

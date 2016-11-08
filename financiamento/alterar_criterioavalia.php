@@ -10,7 +10,7 @@
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
 
-        <title>Cadastrar Critério de Avaliação</title>
+        <title>Alterar Critério de Avaliação</title>
     </head>
     <body> 
         <?php
@@ -28,17 +28,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php
-                            $sql = "INSERT INTO criterio_avaliacao VALUES (' ','" . $_POST["categoria"] . "','" .
-                                    $_POST["criterio_avalia"] . "', 1 ,'" . $_POST["valor_criterio"] .
-                                    "')";
+                            $sql = "UPDATE criterio_avaliacao SET criterio = '" . $_POST['criterio_avalia'] . "' , peso = " . $_POST['valor_criterio'] . ", status = " . $_POST['status'] . " WHERE codigo = " . $_POST['codigo'] . "";
+                            echo ($sql);
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
-<<<<<<< HEAD
-                            <h3>O projeto foi cadastrado com sucesso.</h3><br><br>
-=======
-                            <h3>O critério foi cadastrado com sucesso.</h3><br><br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
+                            <h3>O critério foi alterado com sucesso.</h3><br><br>
                             <div class="row">
                                 <div class="col-md-1">
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
@@ -54,53 +49,42 @@
             </div>
             <?php
         } else {
+            $codigo = $_GET["cod"];
+            $sql = "SELECT * FROM criterio_avaliacao WHERE codigo = '" . $codigo . "'";
+            $result = mysqli_query($con, $sql); /* executa a query */
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             ?>
             <div class="section" style="min-height: 600px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Entre com os dados do projeto</h3>
-                            <form id="cadastra_projecandidato"action="cadastrar_criterioavalia.php" method="post" class="form-horizontal">
+                            <h3>Realize as alterações necessárias</h3>
+                            <form id="cadastra_projecandidato"action="alterar_criterioavalia.php" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Critério de Avaliação</label>
                                     <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" /> 
-=======
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" required/> 
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Categoria</label>
-<<<<<<< HEAD
-                                    <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
-=======
-                                    <div class="col-sm-6">
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
-                                        <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
-                                        <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
-                                        <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
-                                        <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" /> Pequenas Obras<br>
+                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" value="<?php echo $row['criterio'] ?>"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Peso do Critério</label>
                                     <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="number" min="0" max="10" class = "form-control" name="valor_criterio" />
-=======
-                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" />
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
+                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" value="<?php echo $row['peso'] ?>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">Categoria</label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" id="ativado" value= "1" name="status" <?php if($row['status'] == 1){ ?>checked<?php } ?> /> Ativado<br>
+                                        <input type="radio" id="desativado" value="2" name="status" <?php if($row['status'] == 0){ ?>checked<?php } ?> /> Desativado<br>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <button type="submit" name="submit" class="btn btn-primary">Cadastrar</button>
+                                            <input type="hidden" value="<?php echo $codigo; ?>" name="codigo">
+                                            <button type="submit" name="submit" class="btn btn-primary">Alterar</button>
                                         </div>
                                         <div class="col-md-10">
                                             <button type="reset" class="btn btn-primary">Resetar Campos</button>

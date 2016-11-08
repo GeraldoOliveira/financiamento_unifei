@@ -9,45 +9,60 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-
-        <title>Cadastrar Critério de Avaliação</title>
+        <title>Consultar Critérios de Avaliação</title>
     </head>
     <body> 
         <?php
         session_start();
+        include "../financiamento/conexao.php";
         include_once 'header.php';
         include_once 'menu.php';
-        include "../financiamento/conexao.php";
-        ?>
-
-        <?php
         if (isset($_POST["submit"])) {
+
+            $sql = "SELECT DISTINCT categoria FROM criterio_avaliacao";
+            $sql2 = "SELECT * FROM criterio_avaliacao";
+            $result2 = mysqli_query($con, $sql2); /* executa a query */
+            $result = mysqli_query($con, $sql); /* executa a query */
             ?>
             <div class="section" style="min-height: 600px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <?php
-                            $sql = "INSERT INTO criterio_avaliacao VALUES (' ','" . $_POST["categoria"] . "','" .
-                                    $_POST["criterio_avalia"] . "', 1 ,'" . $_POST["valor_criterio"] .
-                                    "')";
-                            mysqli_query($con, $sql); /* executa a query */
-                            mysqli_close($con);
-                            ?>
-<<<<<<< HEAD
-                            <h3>O projeto foi cadastrado com sucesso.</h3><br><br>
-=======
-                            <h3>O critério foi cadastrado com sucesso.</h3><br><br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
-                                </div>
-                                <div class="col-md-11">
-                                    <a class="btn btn-primary" href="cadastrar_projcandidato.php">Novo cadastro</a>
-                                </div>
-                            </div>
-
+                            <fieldset>
+                                <legend><b>Lista de Critérios de Avaliação</b></legend>
+                                <table class="table table-bordered">
+                                    <?php
+                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                        if (!isset($_POST['categoria'])) {
+                                            $categoria = $row['categoria'];
+                                        } else {
+                                            $categoria = $_POST['categoria'];
+                                        }
+                                        if ($row['categoria'] == $categoria) {
+                                            ?>
+                                            <tr>
+                                                <th>
+                                                    <?php echo $row['categoria']; ?> 
+                                                </th>
+                                            </tr>
+                                            <?php
+                                            mysqli_data_seek($result2, 0);
+                                            while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+                                                if ($row['categoria'] == $row2['categoria']) {
+                                                    ?>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="alterar_criterioavalia.php?cod=<?php echo $row2['codigo']; ?>"><?php echo $row2['criterio']; ?></a> 
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </table>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -59,27 +74,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Entre com os dados do projeto</h3>
-                            <form id="cadastra_projecandidato"action="cadastrar_criterioavalia.php" method="post" class="form-horizontal">
+                            <h3>Entre com os dados do critério a pesquisar</h3>
+                            <form id="consulta_user"action="listar_criterioavalia.php" method="post" class="form-horizontal">
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Critério de Avaliação</label>
                                     <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" /> 
-=======
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" required/> 
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
+                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Categoria</label>
-<<<<<<< HEAD
-                                    <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
-=======
                                     <div class="col-sm-6">
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
+                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria"/> Pesquisa<br>
                                         <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                         <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                         <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
@@ -87,20 +93,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Peso do Critério</label>
-                                    <div class="col-sm-6">
-<<<<<<< HEAD
-                                        <input type="number" min="0" max="10" class = "form-control" name="valor_criterio" />
-=======
-                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" />
->>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <br/>
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <button type="submit" name="submit" class="btn btn-primary">Cadastrar</button>
+                                        <div class="col-md-1">
+                                            <button type="submit" name="submit" class="btn btn-primary">Pesquisar</button>
                                         </div>
                                         <div class="col-md-10">
                                             <button type="reset" class="btn btn-primary">Resetar Campos</button>

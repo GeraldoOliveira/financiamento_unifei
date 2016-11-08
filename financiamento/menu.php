@@ -35,6 +35,7 @@
             </div>
           </div>
           <div class="col-md-2">
+<<<<<<< HEAD
             <div class="btn-group btn-group-lg">
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos    <span class="fa fa-caret-down"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -73,11 +74,55 @@
             </div>
           </div>
           <div class="col-md-1">
+=======
+>>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
             <div class="btn-group btn-group-lg">
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Repasses de Projetos    <span class="fa fa-caret-down"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li>
+<<<<<<< HEAD
                     <a href="cadastrar_repasse.php">Adicionar</a>
+=======
+                    <a href="cadastrar_projcandidato.php">Adicionar</a>
+                </li>
+                <li>
+                    <a href="listar_projcandidato.php">Listar</a>
+                </li>
+                <li>
+                    <a href="alterar_projcandidato.php">Alterar</a>
+                </li>
+                <li>
+                    <a href="excluir_projeto.php">Excluir</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação<span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_projcandidato.php">Adicionar Projeto</a>
+                </li>
+                <li>
+                    <a href="listar_projcandidato.php">Listar Projetos</a>
+                </li>
+                <li>
+                    <a href="alterar_projcandidato.php">Alterar Projetos</a>
+                </li>
+                <li>
+                    <a href="excluir_projeto.php">Excluir Projeto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação<span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_projcandidato.php">Adicionar Projeto</a>
+>>>>>>> 07e152fdc35fc01ecfa3d897bb3828f0e3846765
                 </li>
                 <li>
                     <a href="listar_repasse.php">Listar</a>
