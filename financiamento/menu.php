@@ -17,42 +17,82 @@
         <div class="row text-left">
           <div class="col-md-2">
             <div class="btn-group btn-group-lg">
-              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios<span class="fa fa-caret-down"></span></a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios    <span class="fa fa-caret-down"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li>
-                    <a href="cadastrar_usuario.php">Adicionar Usuário</a>
+                    <a href="cadastrar_usuario.php">Adicionar</a>
                 </li>
                 <li>
-                    <a href="consultar_usuario.php">Listar Usuários</a>
+                    <a href="consultar_usuario.php">Listar</a>
                 </li>
                 <li>
-                    <a href="alterar_usuario.php">Alterar Usuário</a>
+                    <a href="alterar_usuario.php">Alterar</a>
                 </li>
                 <li>
-                  <a href="usuario_desativado.php">Desativar Usuários</a>
+                  <a href="usuario_desativado.php">Desativar</a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <div class="btn-group btn-group-lg">
-              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos<span class="fa fa-caret-down"></span></a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos    <span class="fa fa-caret-down"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li>
-                    <a href="cadastrar_projcandidato.php">Adicionar Projeto</a>
+                    <a href="cadastrar_projcandidato.php">Adicionar</a>
                 </li>
                 <li>
-                    <a href="listar_projcandidato.php">Listar Projetos</a>
+                    <a href="listar_projcandidato.php">Listar</a>
                 </li>
                 <li>
-                    <a href="alterar_projcandidato.php">Alterar Projetos</a>
+                    <a href="alterar_projcandidato.php">Alterar</a>
                 </li>
                 <li>
-                    <a href="excluir_projeto.php">Excluir Projeto</a>
+                    <a href="excluir_projeto.php">Excluir</a>
                 </li>
               </ul>
             </div>
           </div>
+          <div class="col-md-3">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação    <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_projcandidato.php">Adicionar</a>
+                </li>
+                <li>
+                    <a href="listar_projcandidato.php">Listar</a>
+                </li>
+                <li>
+                    <a href="alterar_projcandidato.php">Alterar</a>
+                </li>
+                <li>
+                    <a href="excluir_projeto.php">Excluir</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Repasses de Projetos    <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_repasse.php">Adicionar</a>
+                </li>
+                <li>
+                    <a href="listar_repasse.php">Listar</a>
+                </li>
+                <li>
+                    <a href="alterar_repasse.php">Alterar</a>
+                </li>
+                <li>
+                    <a href="excluir_repasse.php">Excluir</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+            
         </div>
       </div>
     </div>

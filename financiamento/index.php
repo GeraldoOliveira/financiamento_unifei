@@ -43,6 +43,7 @@
                 session_start();
                 $_SESSION['nome'] = $user;
                 $_SESSION['login'] = $pesquisa;
+                $_SESSION['tipo'] = $tipo;
                 header("Location:reativa.php");
             } else if ($pass == $bdpass && $status == 1) {
                 session_start();
