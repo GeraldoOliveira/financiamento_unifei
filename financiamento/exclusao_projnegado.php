@@ -13,7 +13,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Cadastrar Projeto Candidato</title>
+        <title>Desativação Negada</title>
     </head>
     <body> 
         <?php

@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Consultar Critérios de Avaliação</title>
+        <title>Listar Critérios de Avaliação</title>
     </head>
     <body> 
         <?php

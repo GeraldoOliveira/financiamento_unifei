@@ -38,7 +38,7 @@
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                                 </div>
                                 <div class="col-md-11">
-                                    <a class="btn btn-primary" href="cadastrar_projcandidato.php">Novo cadastro</a>
+                                    <a class="btn btn-primary" href="listar_criterioavalia.php">Nova Alteração</a>
                                 </div>
                             </div>
 
@@ -62,19 +62,19 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Critério de Avaliação</label>
                                     <div class="col-sm-6">
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" value="<?php echo $row['criterio'] ?>"/> 
+                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" value="<?php echo $row['criterio'] ?>" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Peso do Critério</label>
                                     <div class="col-sm-6">
-                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" value="<?php echo $row['peso'] ?>"/>
+                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" value="<?php echo $row['peso'] ?>"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Categoria</label>
                                     <div class="col-sm-6">
-                                        <input type="radio" id="ativado" value= "1" name="status" <?php if($row['status'] == 1){ ?>checked<?php } ?> /> Ativado<br>
+                                        <input type="radio" id="ativado" value= "1" name="status" <?php if($row['status'] == 1){ ?>checked<?php } ?> required/> Ativado<br>
                                         <input type="radio" id="desativado" value="2" name="status" <?php if($row['status'] == 0){ ?>checked<?php } ?> /> Desativado<br>
                                     </div>
                                 </div>

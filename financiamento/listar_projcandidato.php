@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Consultar Projetos</title>
+        <title>Listar Projetos Candidatos</title>
     </head>
     <body> 
         <?php
@@ -24,15 +24,15 @@
                 $cat = $_POST["categoria"];
             }
             if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat == "") {
-                $sql = "SELECT * FROM projeto_candidato";
+                $sql = "SELECT * FROM projeto_candidato  WHERE status_projeto = 'candidato'";
             } else if ($_POST["cod"] != "" && $_POST["nome_proj"] == "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST["cod"] . "";
+                $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST["cod"] . " AND status_projeto = 'candidato'";
             } else if ($_POST["cod"] == "" && $_POST["nome_proj"] != "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "'";
+                $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "'  AND status_projeto = 'candidato'";
             } else if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat != null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $cat . "'";
+                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $cat . "'  AND status_projeto = 'candidato'";
             } else {
-                $sql = "SELECT * FROM projeto_candidato";
+                $sql = "SELECT * FROM projeto_candidato  WHERE status_projeto = 'candidato'";
             }
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>

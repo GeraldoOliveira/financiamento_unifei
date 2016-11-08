@@ -30,16 +30,16 @@
                     $notatotalvez = $notavez * $pesovez;
                     $pesototal += $pesovez;
                     $sql = "INSERT INTO avaliacao VALUES (" . $codigo . ",'" . $_POST["login_avalia"] . "'," .
-                                    $codvez . "," . $notavez . ",'" . $data .
-                                    "','" . $_POST['sugestao'] . "')";
+                            $codvez . "," . $notavez . ",'" . $data .
+                            "','" . $_POST['sugestao'] . "')";
                     mysqli_query($con, $sql);
                 } else {
                     break;
                 }
-                    $notatotal += $notatotalvez;  
+                $notatotal += $notatotalvez;
             }
             $media = $notatotal / $pesototal;
-            if($media >= 6 ){
+            if ($media >= 6) {
                 $sql = "UPDATE projeto_candidato SET status_projeto = 'aprovado' WHERE cod_projeto = " . $codigo . "";
                 mysqli_query($con, $sql);
             } else {
@@ -47,6 +47,24 @@
                 mysqli_query($con, $sql);
             }
             ?>
+            <div class="section" style="min-height: 600px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>O projeto foi avaliado com sucesso.</h3><br><br>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
+                                </div>
+                                <div class="col-md-11">
+                                    <a class="btn btn-primary" href="avaliar_projcandidato.php">Nova Avaliação</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <?php
         } else {

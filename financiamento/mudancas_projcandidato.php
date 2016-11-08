@@ -70,13 +70,13 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Nome do Projeto</label>
                                 <div class="col-sm-6">
-                                    <input type="text" id="pass" class = "form-control" name="nome_proj" value="<?php echo $row['nome_projeto'] ?>"/> 
+                                    <input type="text" id="pass" class = "form-control" name="nome_proj" value="<?php echo $row['nome_projeto'] ?>"required/> 
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Categoria</label>
                                 <div class="col-sm-6" >
-                                    <input type="radio" id="pesq" value="Pesquisa" name="categoria" <?php if ($cat == 'Pesquisa') { ?> checked <?php } ?>/> Pesquisa<br>
+                                    <input type="radio" id="pesq" value="Pesquisa" name="categoria" required <?php if ($cat == 'Pesquisa') { ?> checked <?php } ?>/> Pesquisa<br>
                                     <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" <?php if ($cat == 'Competição Tecnológica') { ?> checked <?php } ?>/> Competição Tecnológica<br>
                                     <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" <?php if ($cat == 'Inovação no Ensino') { ?> checked <?php } ?>/> Inovação no Ensino<br>
                                     <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" <?php if ($cat == 'Manutenção e Reforma') { ?> checked <?php } ?>/> Manutenção e Reforma<br>
@@ -86,13 +86,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Duração</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class = "form-control" name="duracao" value="<?php echo $row['duracao_projeto'] ?>"/>
+                                    <input type="number" class = "form-control" name="duracao" value="<?php echo $row['duracao_projeto'] ?>"required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Valor Previsto</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class = "form-control" name="valor" value="<?php echo $row['valor_projeto'] ?>" />
+                                    <input type="text" step="0.01" class = "form-control" name="valor" value="<?php echo $row['valor_projeto'] ?>" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -112,7 +112,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Descrição</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class = "form-control" name="descricao" value="<?php echo $row['descricao_projeto'] ?>"/>
+                                    <input type="text" class = "form-control" name="descricao" value="<?php echo $row['descricao_projeto'] ?>"required/>
                                 </div>
                             </div>
                             <div class="form-group">

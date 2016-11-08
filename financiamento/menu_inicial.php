@@ -14,17 +14,37 @@
     <body>
         <?php
         session_start();
+        include_once 'conexao.php';
         include_once 'header.php';
         include_once 'menu.php';
+        $sql = "SELECT * FROM projeto_candidato";
+        $result = mysqli_query($con, $sql); /* executa a query */
+        $i = 1;
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $vetor[$i] = $row['video_projeto'];
+            $i++;
+        }
+        $vid1 = $vetor[rand(1, count($vetor))];
+        $vid2 = $vetor[rand(1, count($vetor))];
+        $vid3 = $vetor[rand(1, count($vetor))];
         ?>
         <div class="section" style="min-height: 600px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <br><h1>Seja bem-vindo <?php echo $_SESSION["nome"];?></h1>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/6uv2yKtjo3I"
-                                    allowfullscreen=""></iframe>
+                        <br><h1>Seja bem-vindo <?php echo $_SESSION["nome"]; ?></h1>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div >
+                            <iframe class="embed-responsive-item" src="<?php echo $vid1 ?>"
+                                    allowfullscreen=""  height="300px" weidth="350px"  frameborder="0"></iframe>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <iframe  class="embed-responsive-item" src="<?php echo $vid2 ?>"
+                                     allowfullscreen=""  height="300px" weidth="350px"  frameborder="0"></iframe>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <iframe  class="embed-responsive-item" src="<?php echo $vid3 ?>"
+                                     allowfullscreen=""  height="300px" weidth="350px"  frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>

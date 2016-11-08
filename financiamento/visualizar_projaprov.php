@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Consultar Projetos</title>
+        <title>Visualizar Projeto Aprovado</title>
     </head>
     <body> 
         <?php
@@ -70,7 +70,7 @@
                                             <?php echo $row['descricao_projeto']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $row['imagem_projeto']; ?>
+                                            <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="200px" width="200px">
                                         </td>
                                         <td>
                                             <?php echo $row['video_projeto']; ?>

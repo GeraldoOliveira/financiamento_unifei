@@ -66,13 +66,13 @@
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">Nome do Projeto</label>
                                         <div class="col-sm-6">
-                                            <input type="text" id="pass" class = "form-control" name="nome_proj" /> 
+                                            <input type="text" id="pass" class = "form-control" name="nome_proj" required/> 
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">Categoria</label>
                                         <div class="col-sm-6" >
-                                            <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
+                                            <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
                                             <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                             <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                             <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
@@ -82,13 +82,13 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Duração</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class = "form-control" name="duracao" />
+                                            <input type="number" class = "form-control" name="duracao" required/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Valor Previsto</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class = "form-control" name="valor" />
+                                            <input type="text" step="0.01" class = "form-control" name="valor" required/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -98,15 +98,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Link do Video</label>
+                                        <label class="col-sm-2 control-label">Video</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class = "form-control" name="video" />
+                                            <input type="text" class = "form-control" name="video" placeholder="Adicionar link do tipo Embed, para compartilhamento." />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Descrição</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class = "form-control" name="descricao" />
+                                            <input type="text" class = "form-control" name="descricao" required/>
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Avaliar Projetos Candidatos</title>
+        <title>Avaliar Projeto Candidato</title>
     </head>
     <body> 
         <?php
@@ -23,17 +23,7 @@
             } else {
                 $cat = $_POST["categoria"];
             }
-            if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat == "") {
-                $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato'";
-            } else if ($_POST["cod"] != "" && $_POST["nome_proj"] == "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST["cod"] . " && status_projeto = 'candidato'";
-            } else if ($_POST["cod"] == "" && $_POST["nome_proj"] != "" && $cat == null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "' && status_projeto = 'candidato'";
-            } else if ($_POST["cod"] == "" && $_POST["nome_proj"] == "" && $cat != null) {
-                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $cat . "' && status_projeto = 'candidato'";
-            } else {
-                $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato'";
-            }
+            $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato' AND cod_projeto =" . $_POST['cod'] . "";
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>
             <div class="section" style="min-height: 600px">
@@ -81,7 +71,7 @@
                                                 <?php echo $row['descricao_projeto']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row['imagem_projeto']; ?>
+                                                <img src="imagens/<?php echo $row['imagem_projeto']; ?>"height="200px" width="200px">
                                             </td>
                                             <td>
                                                 <?php echo $row['video_projeto']; ?>
@@ -130,7 +120,7 @@
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
+                                            <button type="submit" name="submit" class="btn btn-primary">Localizar</button>
                                         </div>
                                         <div class="col-md-10">
                                             <button type="reset" class="btn btn-primary">Resetar Campos</button>

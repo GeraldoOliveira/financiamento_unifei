@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Consultar Repasses dos Projetos</title>
+        <title>Listar Repasses dos Projetos</title>
     </head>
     <body> 
         <?php

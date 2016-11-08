@@ -8,7 +8,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Exibir usuario</title>
+        <title>Exibir Usuário</title>
     </head>
     <body> 
         <?php

@@ -10,7 +10,7 @@
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
 
-        <title>Alterar Critério de Avaliação</title>
+        <title>Alterar Repasse</title>
     </head>
     <body> 
         <?php
@@ -39,7 +39,7 @@
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                                 </div>
                                 <div class="col-md-11">
-                                    <a class="btn btn-primary" href="cadastrar_projcandidato.php">Novo cadastro</a>
+                                    <a class="btn btn-primary" href="listar_repasse.php">Nova Alteração</a>
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <input type="hidden" value="<?php echo $codigo; ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $codigo; ?>" name="codigo"/>
                                             <button type="submit" name="submit" class="btn btn-primary">Alterar</button>
                                         </div>
                                     </div>

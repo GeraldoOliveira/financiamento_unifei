@@ -63,37 +63,37 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Login</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="login" value="<?php echo $row['login'] ?>"/> 
+                                        <input type="text" class = "form-control" name="login" value="<?php echo $row['login'] ?>"required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Senha</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="pass" class = "form-control" name="senha" value="<?php echo $row['senha'] ?>"/> 
+                                        <input type="password" id="pass" class = "form-control" name="senha" value="<?php echo $row['senha'] ?>"required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">País</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="pais" value="<?php echo $row['pais'] ?>"/>
+                                        <input type="text" class = "form-control" name="pais" value="<?php echo $row['pais'] ?>"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Cidade</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="cidade" value="<?php echo $row['cidade'] ?>"/>
+                                        <input type="text" class = "form-control" name="cidade" value="<?php echo $row['cidade'] ?>"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Estado</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="estado" value="<?php echo $row['estado'] ?>" />
+                                        <input type="text" class = "form-control" name="estado" value="<?php echo $row['estado'] ?>" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Endereço</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="endereco" value="<?php echo $row['endereco'] ?>"/>
+                                        <input type="text" class = "form-control" name="endereco" value="<?php echo $row['endereco'] ?>"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -108,7 +108,7 @@
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">Categoria</label>
                                         <div class="col-sm-6" >
-                                            <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
+                                            <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
                                             <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                             <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                             <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>

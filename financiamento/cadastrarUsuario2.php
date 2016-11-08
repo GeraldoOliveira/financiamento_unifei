@@ -86,61 +86,61 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Senha</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="pass" class = "form-control" name="senha" /> 
+                                        <input type="password" id="pass" class = "form-control" name="senha" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Confirma Senha</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="c_pass" class = "form-control" name="c_senha" onblur="confirma_pass()"/>
+                                        <input type="password" id="c_pass" class = "form-control" name="c_senha" onblur="confirma_pass()"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nome completo</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="nome" />
+                                        <input type="text" class = "form-control" name="nome" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">CPF</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="cpf" />
+                                        <input type="text" class = "form-control" name="cpf" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">País</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="pais" />
+                                        <input type="text" class = "form-control" name="pais" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Cidade</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="cidade" />
+                                        <input type="text" class = "form-control" name="cidade" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Estado</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="estado" />
+                                        <input type="text" class = "form-control" name="estado" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Endereço</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="endereco" />
+                                        <input type="text" class = "form-control" name="endereco" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Data de nascimento</label>
                                     <div class="col-sm-6">
-                                        <input type="date" value="dd-mm-aaaa"class ="form-control" name="nascimento" />
+                                        <input type="date" value="dd-mm-aaaa"class ="form-control" name="nascimento" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-6">
-                                        <input type="email" class = "form-control" name="email" />
+                                        <input type="email" class = "form-control" name="email" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -162,7 +162,7 @@
                                                        }
                                                        if (document.getElementById('pequ').disabled == false) {
                                                            document.getElementById('pequ').disabled = true
-                                                       }"/> Gestor de Projetos<br>
+                                                       }"required/> Gestor de Projetos<br>
                                         <input type="radio" id="avalid" value="Avaliador de Projetos" name="tipo" onclick="
                                                 if (document.getElementById('pesq').disabled == true) {
                                                     document.getElementById('pesq').disabled = false
@@ -201,7 +201,7 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Categoria</label>
                                     <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" /> Pesquisa<br>
+                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
                                         <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
                                         <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                         <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>

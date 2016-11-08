@@ -68,44 +68,44 @@
                         </div>
                     </div>
                 </div>
-            <?php
-        }
-    } else {
-        ?>
-        <div class="section" style="min-height: 600px">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 style="margin:0">Bem-vindo ao Financiamento Unifei.</h2><br>
-                        <div style="font-size: 14"><strong>Por favor, realize o login.</strong></div><br>
-                        <div>
-                            <form action="index.php" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputCode" class="col-sm-1 control-label">Login</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" class="form-group" id="inputCode" name="login" >
+                <?php
+            }
+        } else {
+            ?>
+            <div class="section" style="min-height: 600px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 style="margin:0">Bem-vindo ao Financiamento Unifei.</h2><br>
+                            <div style="font-size: 14"><strong>Por favor, realize o login.</strong></div><br>
+                            <div>
+                                <form action="index.php" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputCode" class="col-sm-1 control-label">Login</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-group" id="inputCode" name="login" >
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class= "col-sm-1 control-label">Senha</label>
-                                    <div class="col-sm-1">
-                                        <input type="password" class="form-group" id ="inputPassword" name="senha">
+                                    <div class="form-group">
+                                        <label for="inputPassword" class= "col-sm-1 control-label">Senha</label>
+                                        <div class="col-sm-1">
+                                            <input type="password" class="form-group" id ="inputPassword" name="senha">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-1 col-sm-10">
-                                        <br><button type="submit" name="submit" value="LoginFuncionario" class="btn btn-primary" >Logar</button>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-1 col-sm-10">
+                                            <br><button type="submit" name="submit" value="LoginFuncionario" class="btn btn-primary" >Logar</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
-    }
-    include_once 'footer.php';
-    ?>
-</body>
+            <?php
+        }
+        include_once 'footer.php';
+        ?>
+    </body>
 </html>

@@ -9,7 +9,7 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Avaliar Projetos Candidatos</title>
+        <title>Consultar Projetos Aprovados</title>
     </head>
     <body> 
         <?php
