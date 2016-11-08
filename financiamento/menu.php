@@ -34,9 +34,28 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <div class="btn-group btn-group-lg">
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos<span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_projcandidato.php">Adicionar</a>
+                </li>
+                <li>
+                    <a href="listar_projcandidato.php">Listar</a>
+                </li>
+                <li>
+                    <a href="alterar_projcandidato.php">Alterar</a>
+                </li>
+                <li>
+                    <a href="excluir_projeto.php">Excluir</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação<span class="fa fa-caret-down"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li>
                     <a href="cadastrar_projcandidato.php">Adicionar Projeto</a>
@@ -53,6 +72,27 @@
               </ul>
             </div>
           </div>
+          <div class="col-md-1">
+            <div class="btn-group btn-group-lg">
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação<span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="cadastrar_projcandidato.php">Adicionar Projeto</a>
+                </li>
+                <li>
+                    <a href="listar_projcandidato.php">Listar Projetos</a>
+                </li>
+                <li>
+                    <a href="alterar_projcandidato.php">Alterar Projetos</a>
+                </li>
+                <li>
+                    <a href="excluir_projeto.php">Excluir Projeto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+            
         </div>
       </div>
     </div>
