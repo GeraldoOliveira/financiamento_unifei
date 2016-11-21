@@ -28,15 +28,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php
-                            $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST['codigo'] . ""; /*seleciona todo o banco de projetos */
+                            $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $_POST['codigo'] . ""; /* seleciona todo o banco de projetos */
                             $result = mysqli_query($con, $sql); /* executa a query */
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $valorSomado = $row['financiado_projeto'] + $_POST['valor'];
                             $data = date("Y,m,d");
-                            $sql = $sql = "INSERT INTO financiamento VALUES (" . $_POST["codigo"] . ",'" . $_SESSION['nome'] . "','" .
-                                    $data . "'," . $_POST['valor'] . ", ' ') "; /*salva os valores na tabela financiamento*/
+                            $sql = $sql = "INSERT INTO financiamento VALUES (' '," . $_POST["codigo"] . ",'" . $row['nome_projeto'] . "','" . $_SESSION['nome'] . "','" .
+                                    $data . "'," . $_POST['valor'] . ") "; /* salva os valores na tabela financiamento */
                             mysqli_query($con, $sql); /* executa a query */
-                            $sql = "UPDATE projeto_candidato SET financiado_projeto = " . $valorSomado . " WHERE cod_projeto = " . $_POST['codigo'] . ""; /*atualiza o valor total financiado */
+                            $sql = "UPDATE projeto_candidato SET financiado_projeto = " . $valorSomado . " WHERE cod_projeto = " . $_POST['codigo'] . ""; /* atualiza o valor total financiado */
                             mysqli_query($con, $sql);
                             mysqli_close($con);
                             ?>
@@ -70,7 +70,10 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Valor a financiar</label>
                                     <div class="col-sm-6">
-                                        <input type="number" min="<?php echo $row['valor_min']?>" max="<?php echo $row['valor_max']?>"class = "form-control" value= 0 name="valor" required/>
+                                        <input type="number" min="<?php echo $row['valor_min'] ?>" max="<?php echo $row['valor_max'] ?>" class = "form-control" value= "<?php echo $row['valor_min']; ?>" name="valor" required/>
+                                    </div>
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <p class="help-block">Valor mínimo possível para financiar.</p>
                                     </div>
                                 </div>
                                 <div class="form-group">

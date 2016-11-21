@@ -27,16 +27,16 @@
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios    <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="cadastrar_usuario.php">Adicionar</a>
+                                    <a href="cadastrar_usuario.php">Adicionar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="consultar_usuario.php">Listar</a>
+                                    <a href="consultar_usuario.php">Listar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="alterar_usuario.php">Alterar</a>
+                                    <a href="alterar_usuario.php">Alterar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="usuario_desativado.php">Desativar</a>
+                                    <a href="usuario_desativado.php">Desativar Projeto Candidato</a>
                                 </li>
                             </ul>
                         </div>
@@ -77,6 +77,9 @@
                                 </li>
                                 <li>
                                     <a href="consulta_projaprov.php">Definir Restrições de Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consultar_financiamentos.php">Consultar Financiamentos</a>
                                 </li>
                                 <li>
                             </ul>

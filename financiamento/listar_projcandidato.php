@@ -84,7 +84,9 @@
                                                 <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="200px" width="200px">
                                             </td>
                                             <td>
-                                                <?php echo $row['video_projeto']; ?>
+                                                <iframe class="embed-responsive-item" src="<?php echo $row['video_projeto']; ?>"
+                                                        allowfullscreen=""  height= "300px" width="100%"  frameborder="0" class="img-responsive">
+                                                </iframe>
                                             </td>
                                         </tr>
                                     <?php } ?>
