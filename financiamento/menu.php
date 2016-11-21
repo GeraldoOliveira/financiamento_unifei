@@ -27,16 +27,16 @@
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios    <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="cadastrar_usuario.php">Adicionar Projeto Candidato</a>
+                                    <a href="cadastrar_usuario.php">Adicionar </a>
                                 </li>
                                 <li>
-                                    <a href="consultar_usuario.php">Listar Projeto Candidato</a>
+                                    <a href="consultar_usuario.php">Listar</a>
                                 </li>
                                 <li>
-                                    <a href="alterar_usuario.php">Alterar Projeto Candidato</a>
+                                    <a href="alterar_usuario.php">Alterar</a>
                                 </li>
                                 <li>
-                                    <a href="usuario_desativado.php">Desativar Projeto Candidato</a>
+                                    <a href="usuario_desativado.php">Desativar</a>
                                 </li>
                             </ul>
                         </div>
@@ -47,16 +47,16 @@
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos    <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="cadastrar_projcandidato.php">Adicionar</a>
+                                    <a href="cadastrar_projcandidato.php">Adicionar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="listar_projcandidato.php">Listar</a>
+                                    <a href="listar_projcandidato.php">Listar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="alterar_projcandidato.php">Alterar</a>
+                                    <a href="alterar_projcandidato.php">Alterar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="excluir_projeto.php">Excluir</a>
+                                    <a href="excluir_projeto.php">Excluir Projeto Candidato</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
