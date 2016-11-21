@@ -19,6 +19,9 @@
         <div class="section section-info text-left">
             <div class="container">
                 <div class="row text-left">
+                    <?php 
+                    #$tipo = $_SESSION['tipo'];
+                    #if($tipo === "Gestor de Projetos") {?>
                     <div class="col-md-2">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios    <span class="fa fa-caret-down"></span></a>
@@ -38,6 +41,7 @@
                             </ul>
                         </div>
                     </div>
+                    <?php #} else if($tipo == "Avaliador de Projetos") { ?>
                     <div class="col-md-2">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos    <span class="fa fa-caret-down"></span></a>
@@ -72,6 +76,7 @@
                             </ul>
                         </div>
                     </div>
+                    <?php #} ?>
                     <div class="col-md-3">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação    <span class="fa fa-caret-down"></span></a>
