@@ -84,6 +84,9 @@
                                 <a class="btn btn-primary" href="finalizar_projeto.php?codigo=<?php echo $cod; ?>">Finalizar projeto</a>
                             </div>
                             <div class="col-md-2">
+                                <a class="btn btn-primary" href="definir_restricoes.php?codigo=<?php echo $cod; ?>">Definir restrições</a>
+                            </div>
+                            <div class="col-md-2">
                                 <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                             </div>
                         </div>
