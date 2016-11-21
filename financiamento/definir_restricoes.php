@@ -10,7 +10,7 @@
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
 
-        <title>Alterar Critério de Avaliação</title>
+        <title>Definir restrições do projeto</title>
     </head>
     <body> 
         <?php
@@ -28,17 +28,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php
-                            $sql = "UPDATE criterio_avaliacao SET criterio = '" . $_POST['criterio_avalia'] . "' , peso = " . $_POST['valor_criterio'] . ", status = " . $_POST['status'] . " WHERE codigo = " . $_POST['codigo'] . "";
+                            $dat = date_create($_POST['prazo']);
+                            $data = date_format($dat, "Y/m/d");
+                            $sql = "UPDATE projeto_candidato SET valor_min = " . $_POST['min'] . " , valor_max = " . $_POST['max'] . " , prazo_max = '" . $data . "' WHERE cod_projeto = " . $_POST['codigo'] . "";
                             mysqli_query($con, $sql); /* executa a query */
                             mysqli_close($con);
                             ?>
-                            <h3>O critério foi alterado com sucesso.</h3><br><br>
+                            <h3>As restrições foram definidas com sucesso.</h3><br><br>
                             <div class="row">
                                 <div class="col-md-1">
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                                 </div>
                                 <div class="col-md-11">
-                                    <a class="btn btn-primary" href="listar_criterioavalia.php">Nova Alteração</a>
+                                    <a class="btn btn-primary" href="consulta_projaprov.php">Nova Alteração</a>
                                 </div>
                             </div>
 
@@ -48,42 +50,43 @@
             </div>
             <?php
         } else {
-            $codigo = $_GET["cod"];
-            $sql = "SELECT * FROM criterio_avaliacao WHERE codigo = '" . $codigo . "'";
+            $codigo = $_GET["codigo"];
+            $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $codigo . "";
             $result = mysqli_query($con, $sql); /* executa a query */
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $data = date_create($row['prazo_max']);
+            $data_c = date_format($data, "d/m/Y");
             ?>
             <div class="section" style="min-height: 600px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Realize as alterações necessárias</h3>
-                            <form id="cadastra_projecandidato"action="alterar_criterioavalia.php" method="post" class="form-horizontal">
+                            <h3>Defina as restrições, se desejar.</h3><br>
+                            <form id="defini_restrições"action="definir_restricoes.php" method="post" class="form-horizontal">
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Critério de Avaliação</label>
+                                    <label class="col-sm-2 control-label">Data limite</label>
                                     <div class="col-sm-6">
-                                        <input type="text" id="pass" class = "form-control" name="criterio_avalia" value="<?php echo $row['criterio'] ?>" required/> 
+                                        <input type="date" class = "form-control" value="<?php echo $data_c ?>" name="prazo" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Peso do Critério</label>
+                                    <label class="col-sm-2 control-label">Valor mínimo</label>
                                     <div class="col-sm-6">
-                                        <input type="number" min="0" max="10" required="required"class = "form-control" name="valor_criterio" value="<?php echo $row['peso'] ?>"required/>
+                                        <input type="number" step="0.01" class = "form-control" value="<?php echo $row['valor_min'];?>" name="min" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Categoria</label>
+                                    <label class="col-sm-2 control-label">Valor máximo</label>
                                     <div class="col-sm-6">
-                                        <input type="radio" id="ativado" value= "1" name="status" <?php if($row['status'] == 1){ ?>checked<?php } ?> required/> Ativado<br>
-                                        <input type="radio" id="desativado" value="2" name="status" <?php if($row['status'] == 0){ ?>checked<?php } ?> /> Desativado<br>
+                                        <input type="number" step="0.01" class = "form-control" value="<?php echo $row['valor_max'];?>" name="max" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <input type="hidden" value="<?php echo $codigo; ?>" name="codigo">
-                                            <button type="submit" name="submit" class="btn btn-primary">Alterar</button>
+                                            <input type="hidden" value="<?php echo $codigo; ?>" name="codigo"/>
+                                            <button type="submit" name="submit" class="btn btn-primary">Definir restrições</button>
                                         </div>
                                     </div>
                                 </div>

@@ -36,7 +36,7 @@
             }
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>
-            <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 600px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -84,7 +84,9 @@
                                                 <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="200px" width="200px">
                                             </td>
                                             <td>
-                                                <?php echo $row['video_projeto']; ?>
+                                                <iframe class="embed-responsive-item" src="<?php echo $row['video_projeto']; ?>"
+                                                        allowfullscreen=""  height= "300px" width="100%"  frameborder="0" class="img-responsive">
+                                                </iframe>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -133,7 +135,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                         <div class="col-md-10">
-                                            <button type="reset" class="btn btn-primary">Resetar Campos</button>
+                                             
                                         </div>
                                     </div>
                                 </div>

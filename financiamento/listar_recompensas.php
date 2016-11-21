@@ -9,61 +9,76 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Excluir Projeto</title>
+        <title>Listar Recompensas</title>
     </head>
     <body> 
         <?php
         session_start();
+        include "../financiamento/conexao.php";
         include_once 'header.php';
         include_once 'menu.php';
-        include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
-            ?>        <div class="section" style="min-height: 600px">
+            if ($_POST['nome'] == "" && $_POST['codigo'] != "") {
+                $sql = "SELECT * FROM recompensa WHERE cod_projeto = " . $_POST['codigo'] . "";
+                $result = mysqli_query($con, $sql); /* executa a query */
+            } else if ($_POST['nome'] != "" && $_POST['codigo'] == "") {
+                $sql = "SELECT * FROM recompensa WHERE nome_projeto = '" . $_POST['nome'] . "'";
+                $result = mysqli_query($con, $sql); /* executa a query */
+            } else {
+                $sql = "SELECT * FROM recompensa";
+                $result = mysqli_query($con, $sql); /* executa a query */
+            }
+            ?>
+            <div class="section" style="min-height: 600px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <?php
-                            if ($_POST["cod"] == "" && $_POST["nome_proj"] == "") {
-                                $sql = "SELECT * FROM projeto_candidato WHERE categoria_projeto = '" . $_POST["categoria"] . "'";
-                            } else {
-                                $sql = "SELECT cod_projeto, nome_projeto , categoria_projeto , duracao_projeto , valor_projeto , status_projeto FROM projeto_candidato WHERE nome_projeto = '" . $_POST["nome_proj"] . "' OR cod_projeto = '" . $_POST["cod"] . "'";
-                            }
-                            $result = mysqli_query($con, $sql); /* executa a query */
-                            ?>
                             <fieldset>
-                                <legend><b>Lista Informações de Projetos</b></legend>
+                                <legend><b>Lista de recompensas</b></legend>
                                 <table class="table table-bordered">
                                     <tr>
-                                        <td><b>Codigo</b></td>
-                                        <td><b>Nome</b></td>
-                                        <td><b>Categoria</b></td>
-                                        <td><b>Duração Estimada</b></td>
-                                        <td><b>Valor Estimado</b></td>
-                                        <td><b>Status do Projeto</b></td>
+                                        <td><b>Nome do Projeto</b></td>
+                                        <td><b>Codigo do Projeto</b></td>
+                                        <td><b>Valor minimo para recompensa</b></td>
+                                        <td><b>Valor máximo para recompensa</b></td>
+                                        <td><b>Recompensa</b></td>
+                                        <td><b>Deletar</b></td>
                                     </tr>
                                     <?php
                                     //Lista dados
                                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                        $sql2 = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $row['cod_projeto'] . "";
+                                        $result2 = mysqli_query($con, $sql2);
+                                        $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                                         ?>
                                         <tr>
                                             <td>
-                                                <a href="confirmar_exclusao.php?nome=<?php echo $row['cod_projeto']; ?>"><?php echo $row['cod_projeto']; ?></a> 
+                                                <?php if ($row2['status_projeto'] == 'finalizado') {
+                                                    ?> <a href="alterar_recompensa.php?codigo=<?php echo $row['cod_recompensa']; ?>"><?php echo $row['nome_projeto']; ?></a><?php
+                                                } else {
+                                                    echo $row['nome_projeto'];
+                                                }
+                                                ?> 
                                             </td>
                                             <td>
-                                                <?php echo $row['nome_projeto']; ?>
+                                                <?php echo $row['cod_projeto']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row['categoria_projeto']; ?> 
+                                                <?php echo $row['valor_min']; ?> 
                                             </td>
                                             <td>
-                                                <?php echo $row['duracao_projeto']; ?>
+                                                <?php echo $row['valor_max']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row['valor_projeto']; ?> 
+                                                <?php echo $row['descricao']; ?> 
                                             </td>
+                                            <?php if ($row2['status_projeto'] == 'finalizado') { ?>
                                             <td>
-                                                <?php echo $row['status_projeto']; ?>
+                                                <div class="col-md-11">
+                                                    <a class="btn btn-primary" href="apagar_recompensa.php?codigo=<?php echo $row['cod_recompensa']; ?>">Excluir</a>
+                                                </div>
                                             </td>
+                                            <?php } ?>
                                         </tr>
                                     <?php } ?>
                                 </table>
@@ -80,27 +95,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Entre com os dados do projeto</h3>
-                            <form id="consulta_user"action="excluir_projeto.php" method="post" class="form-horizontal">
+                            <form id="consulta_user"action="listar_recompensas.php" method="post" class="form-horizontal">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Código</label>
+                                    <label  class="col-sm-2 control-label">Nome do projeto</label>
                                     <div class="col-sm-6">
-                                        <input type="number" class = "form-control" name="cod" /> 
+                                        <input type="text" id="pass" class = "form-control" name="nome"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Nome do Projeto</label>
+                                    <label  class="col-sm-2 control-label">Codigo do projeto</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="nome_proj" /> 
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Categoria</label>
-                                    <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
-                                        <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
-                                        <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
-                                        <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
-                                        <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" /> Pequenas Obras<br>
+                                        <input type="text" id="pass" class = "form-control" name="codigo"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -108,9 +113,6 @@
                                     <div class="row">
                                         <div class="col-md-1">
                                             <button type="submit" name="submit" class="btn btn-primary">Pesquisar</button>
-                                        </div>
-                                        <div class="col-md-10">
-                                             
                                         </div>
                                     </div>
                                 </div>

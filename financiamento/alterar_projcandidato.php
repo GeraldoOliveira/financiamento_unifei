@@ -121,9 +121,6 @@
                                         <div class="col-md-1">
                                             <button type="submit" name="submit" class="btn btn-primary">Buscar</button>
                                         </div>
-                                        <div class="col-md-10">
-                                            <button type="reset" class="btn btn-primary">Resetar Campos</button>
-                                        </div>
                                     </div>
                                 </div>
                             </form> 

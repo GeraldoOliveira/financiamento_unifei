@@ -19,12 +19,15 @@
         <div class="section section-info text-left">
             <div class="container">
                 <div class="row text-left">
+                    <?php 
+                    #$tipo = $_SESSION['tipo'];
+                    #if($tipo === "Gestor de Projetos") {?>
                     <div class="col-md-2">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Usuarios    <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="cadastrar_usuario.php">Adicionar</a>
+                                    <a href="cadastrar_usuario.php">Adicionar </a>
                                 </li>
                                 <li>
                                     <a href="consultar_usuario.php">Listar</a>
@@ -38,21 +41,22 @@
                             </ul>
                         </div>
                     </div>
+                    <?php #} else if($tipo == "Avaliador de Projetos") { ?>
                     <div class="col-md-2">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Projetos    <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="cadastrar_projcandidato.php">Adicionar</a>
+                                    <a href="cadastrar_projcandidato.php">Adicionar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="listar_projcandidato.php">Listar</a>
+                                    <a href="listar_projcandidato.php">Listar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="alterar_projcandidato.php">Alterar</a>
+                                    <a href="alterar_projcandidato.php">Alterar Projeto Candidato</a>
                                 </li>
                                 <li>
-                                    <a href="excluir_projeto.php">Excluir</a>
+                                    <a href="excluir_projeto.php">Excluir Projeto Candidato</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -66,12 +70,22 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="consulta_projaprov.php">Consultar Projetos Aprovados</a>
+                                    <a href="consulta_projaprov.php">Financiar Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consulta_projaprov.php">Consultar Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consulta_projaprov.php">Definir Restrições de Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consultar_financiamentos.php">Consultar Financiamentos</a>
                                 </li>
                                 <li>
                             </ul>
                         </div>
                     </div>
+                    <?php #} ?>
                     <div class="col-md-3">
                         <div class="btn-group btn-group-lg">
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Critérios de Avaliação    <span class="fa fa-caret-down"></span></a>

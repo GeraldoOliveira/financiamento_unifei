@@ -20,6 +20,7 @@
         if (isset($_POST["submit"])) {
             $codigo = $_POST['cod_proj'];
             $data = date('Y-m-d');
+            $data2 = date('Y-m-d', strtotime("+365 days"));
             $notatotal = 0;
             $pesototal = 0;
             for ($i = 0; $i < 100; $i++) {
@@ -38,9 +39,13 @@
                 }
                 $notatotal += $notatotalvez;
             }
+            $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $codigo . "";
+            $result = mysqli_query($con, $sql); /* executa a query */
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $valorTotal = $row['valor_projeto'];
             $media = $notatotal / $pesototal;
             if ($media >= 6) {
-                $sql = "UPDATE projeto_candidato SET status_projeto = 'aprovado' WHERE cod_projeto = " . $codigo . "";
+                $sql = "UPDATE projeto_candidato SET status_projeto = 'aprovado', valor_max = " . $valorTotal . " , prazo_max = '" . $data2 . "' WHERE cod_projeto = " . $codigo . "";
                 mysqli_query($con, $sql);
             } else {
                 $sql = "UPDATE projeto_candidato SET status_projeto = 'reprovado' WHERE cod_projeto = " . $codigo . "";

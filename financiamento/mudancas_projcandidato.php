@@ -110,9 +110,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Descrição</label>
+                                <label  class="col-sm-2 control-label">Descrição</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class = "form-control" name="descricao" value="<?php echo $row['descricao_projeto'] ?>"required/>
+                                    <textarea rows="4" cols="71" class="form-control" name="descricao"><?php echo $row['descricao_projeto']; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -123,7 +123,7 @@
                                         <button type="submit" name="submit" class="btn btn-primary">Alterar</button>
                                     </div>
                                     <div class="col-md-10">
-                                        <button type="reset" class="btn btn-primary">Resetar Campos</button>
+                                         
                                     </div>
                                 </div>
                             </div>

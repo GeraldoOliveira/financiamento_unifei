@@ -17,13 +17,12 @@
         include "../financiamento/conexao.php";
         include_once 'header.php';
         include_once 'menu.php';
-        
+
         $cod = $_GET['codigo'];
-        
+
         $sql = "SELECT * FROM projeto_candidato WHERE cod_projeto = " . $cod . "";
-        
+
         $result = mysqli_query($con, $sql); /* executa a query */
-        
         ?>
         <div class="section" style="min-height: 600px">
             <div class="container">
@@ -42,6 +41,7 @@
                                     <td><b>Descrição</b></td>
                                     <td><b>Imagem</b></td>
                                     <td><b>Video</b></td>
+                                    <td><b>Valor Arrecadado</b></td>
                                 </tr>
                                 <?php
                                 //Lista dados
@@ -73,7 +73,12 @@
                                             <img src="imagens/<?php echo $row['imagem_projeto']; ?>" height="200px" width="200px">
                                         </td>
                                         <td>
-                                            <?php echo $row['video_projeto']; ?>
+                                            <iframe class="embed-responsive-item" src="<?php echo $row['video_projeto']; ?>"
+                                                    allowfullscreen=""  height= "300px" width="100%"  frameborder="0" class="img-responsive">
+                                            </iframe>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['financiado_projeto']; ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -81,8 +86,20 @@
                         </fieldset>
                         <div class="row">
                             <div class="col-md-2">
+                                <a class="btn btn-primary" href="financiar_projeto.php?codigo=<?php echo $cod; ?>">Financiar projeto</a>
+                            </div>
+                            <?php
+                                if ($_SESSION['tipo'] == "Gestor de Projetos") {
+                            ?>
+                                <div class="col-md-2">
+                                    <a class="btn btn-primary" href="definir_restricoes.php?codigo=<?php echo $cod; ?>">Definir restrições</a>
+                                </div>                            
+                            <div class="col-md-2">
                                 <a class="btn btn-primary" href="finalizar_projeto.php?codigo=<?php echo $cod; ?>">Finalizar projeto</a>
                             </div>
+                            <?php
+                                }
+                            ?>
                             <div class="col-md-2">
                                 <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                             </div>

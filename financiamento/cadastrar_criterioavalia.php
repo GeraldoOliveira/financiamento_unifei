@@ -86,7 +86,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Cadastrar</button>
                                         </div>
                                         <div class="col-md-10">
-                                            <button type="reset" class="btn btn-primary">Resetar Campos</button>
+                                             
                                         </div>
                                     </div>
                                 </div>
