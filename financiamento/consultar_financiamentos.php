@@ -18,13 +18,13 @@
         include_once 'header.php';
         include_once 'menu.php';
         if (isset($_POST["submit"])) {
+            $dat = date_create($_POST['data']);
+            $data = date_format($dat, "Y-m-d");
             if ($_POST['nome_proj'] == "" && $_POST['data'] != "") {
-                $data = date_create($_POST['data']);
-                $dateFormat = date_format($data, "Y,m,d");
-                $sql = "SELECT * FROM financiamento WHERE data = " . $dateFormat . " ORDER BY nome";
+                $sql = "SELECT * FROM financiamento WHERE data = '" . $data . "' ORDER BY nome";
                 $result = mysqli_query($con, $sql);
             } else if ($_POST['nome_proj'] != "" && $_POST['data'] == "") {
-                $sql = "SELECT * FROM financiamento WHERE nome_projeto = '" . $_POST['nome_proj'] . "' ORDER BY nome";
+                $sql = "SELECT * FROM financiamento WHERE nome = '" . $_POST['nome_proj'] . "' ORDER BY nome, data";
                 $result = mysqli_query($con, $sql);
             } else {
                 $sql = "SELECT * FROM financiamento ORDER BY nome";
@@ -52,13 +52,15 @@
                                                 <a href="visualizar_projaprov.php?codigo=<?php echo $row['cod_projeto'] ?>"><?php echo $row['nome']; ?></a>
                                             </td>
                                             <td>
-                                                <?php $data = date_create($row['data']); echo date_format($data, "d/m/Y"); ?>
+                                                <?php $data = date_create($row['data']);
+                                                echo date_format($data, "d/m/Y");
+                                                ?>
                                             </td>
                                             <td>
                                                 R$ <?php echo $row['valor']; ?>,00
                                             </td>
                                         </tr>
-                                    <?php } ?>
+    <?php } ?>
                                 </table>
                             </fieldset>
                         </div>
@@ -83,7 +85,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Data do Financiamento</label>
                                     <div class="col-sm-6">
-                                        <input type="date" placeholder="dd/mm/YYYY" class = "form-control" name="data" /> 
+                                        <input type="date" placeholder="dd-mm-YYYY" class = "form-control" name="data" /> 
                                     </div>
                                 </div>
                                 <div class="form-group">
