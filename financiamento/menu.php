@@ -70,7 +70,13 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="consulta_projaprov.php">Consultar Projetos Aprovados</a>
+                                    <a href="consulta_projaprov.php">Financiar Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consulta_projaprov.php">Consultar Projetos</a>
+                                </li>
+                                <li>
+                                    <a href="consulta_projaprov.php">Definir Restrições de Projetos</a>
                                 </li>
                                 <li>
                             </ul>
