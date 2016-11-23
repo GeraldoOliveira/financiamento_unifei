@@ -16,7 +16,7 @@
         session_start();
         include_once 'header.php';
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

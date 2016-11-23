@@ -10,7 +10,7 @@
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
 
-        <title>Cadastrar Projeto Candidato</title>
+        <title>Cadastrar Recompensa</title>
     </head>
     <body> 
         <?php
@@ -20,7 +20,7 @@
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
                 ?>
-                <div class="section" style="min-height: 600px">
+                <div class="section" style="min-height: 450px">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -52,7 +52,7 @@
                 <?php
             } else {
                 ?>
-                <div class="section" style="min-height: 600px">
+                <div class="section" style="min-height: 450px">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">

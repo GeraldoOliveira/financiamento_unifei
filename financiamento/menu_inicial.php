@@ -50,7 +50,7 @@
         $porcento2 = (($vetor4[$var2] / $vetor3[$var2]) * 100);
         $porcento3 = (($vetor4[$var3] / $vetor3[$var3]) * 100);
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

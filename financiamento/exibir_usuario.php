@@ -20,7 +20,7 @@
         $sql = "SELECT login, categoria, nome_completo, cidade, estado, pais, data_nascimento, email, tipo FROM usuario WHERE nome_completo = '" . $pesquisa . "' AND status = 1 ";
         $result = mysqli_query($con, $sql); /* executa a query */
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

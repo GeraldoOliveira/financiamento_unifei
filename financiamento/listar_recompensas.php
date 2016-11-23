@@ -29,7 +29,7 @@
                 $result = mysqli_query($con, $sql); /* executa a query */
             }
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -42,7 +42,9 @@
                                         <td><b>Valor minimo para recompensa</b></td>
                                         <td><b>Valor máximo para recompensa</b></td>
                                         <td><b>Recompensa</b></td>
-                                        <td><b>Deletar</b></td>
+                                        <?php if($_SESSION['tipo'] == "Gestor de Projetos"){ ?>
+                                            <td><b>Deletar</b></td>
+                                        <?php } ?>
                                     </tr>
                                     <?php
                                     //Lista dados
@@ -72,13 +74,14 @@
                                             <td>
                                                 <?php echo $row['descricao']; ?> 
                                             </td>
-                                            <?php if ($row2['status_projeto'] == 'finalizado') { ?>
                                             <td>
+                                                <?php if ($row2['status_projeto'] == 'finalizado'){ ?>
                                                 <div class="col-md-11">
                                                     <a class="btn btn-primary" href="apagar_recompensa.php?codigo=<?php echo $row['cod_recompensa']; ?>">Excluir</a>
                                                 </div>
+                                                <?php } ?>
                                             </td>
-                                            <?php } ?>
+                                            
                                         </tr>
                                     <?php } ?>
                                 </table>
@@ -90,7 +93,7 @@
             <?php
         } else {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">

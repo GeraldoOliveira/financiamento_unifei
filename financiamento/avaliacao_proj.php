@@ -18,12 +18,13 @@
         include_once 'header.php';
         include_once 'menu.php';
         if (isset($_POST["submit"])) {
+            $total = $_POST['total_array'];
             $codigo = $_POST['cod_proj'];
             $data = date('Y-m-d');
             $data2 = date('Y-m-d', strtotime("+365 days"));
             $notatotal = 0;
             $pesototal = 0;
-            for ($i = 0; $i < 100; $i++) {
+            for ($i = 0; $i < $total; $i++) {
                 if ($_POST["cod_avalia" . $i . ""] != NULL) {
                     $codvez = $_POST["cod_avalia" . $i . ""];
                     $notavez = $_POST["nota_avalia" . $i . ""];
@@ -52,7 +53,7 @@
                 mysqli_query($con, $sql);
             }
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -78,7 +79,7 @@
             $sql = "SELECT * FROM criterio_avaliacao  WHERE categoria = '" . $cat . "'";
             $result = mysqli_query($con, $sql);
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -129,6 +130,7 @@
                                     <div class = "row">
                                         <div class = "col-md-1">
                                             <input type="hidden" value="<?php echo $cod; ?>" name="cod_proj" />
+                                            <input type="hidden" value="<?php echo $i; ?>" name="total_array" />
                                             <button type = "submit" name = "submit" class = "btn btn-primary">Avaliar</button>
                                         </div>
                                         <div class = "col-md-10">

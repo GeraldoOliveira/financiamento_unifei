@@ -20,7 +20,7 @@
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -50,7 +50,7 @@
             $result = mysqli_query($con, $sql); /* executa a query */
             $row = mysqli_fetch_array($result);
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">

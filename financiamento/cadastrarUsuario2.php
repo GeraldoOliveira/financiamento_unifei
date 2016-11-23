@@ -9,17 +9,24 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
-        <title>Cadastrar Usuarios</title>
+
+        <script src="js/jquery-3.1.1.slim.min.js" type="text/javascript"></script>
+        <script src="js/jquery.maskMoney.js" type="text/javascript"></script>
+        <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+        <title>Cadastrar Usuarioe</title>
         <script>
+
+            jQuery(function ($) {
+                $("#nasc").mask("99-99-9999", {placeholder: " "});
+                $("#cpf").mask("999.999.999-99", {placeholder: " "});
+            });
             var cc = 0;
             function confirma_pass() {
                 var pass = document.getElementById("pass").value;
                 var cpass = document.getElementById("c_pass").value;
                 if (pass != cpass) {
                     alert("Senhas não conferem");
-
                     document.getElementById("pass").focus();
-
                     //variavel pra ver se já entrou aqui
                     cc = cc + 1;
                 }
@@ -32,7 +39,7 @@
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -60,7 +67,7 @@
                             <h3>Usuário cadastrado com sucesso.</h3>
                             <div class="row">
                                 <div class="col-md-11">
-                                    <a class="btn btn-primary" href="menu_inicial.php">Logar</a>
+                                    <a class="btn btn-primary" href="index.php">Logar</a>
                                 </div>
                             </div>
 
@@ -71,7 +78,7 @@
             <?php
         } else {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -104,7 +111,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">CPF</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="cpf" required/>
+                                        <input type="text" class ="form-control" name="cpf" id="cpf"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -134,7 +141,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Data de nascimento</label>
                                     <div class="col-sm-6">
-                                        <input type="date" value="dd-mm-aaaa"class ="form-control" name="nascimento" required/>
+                                        <input type="date" class ="form-control" name="nascimento" id="nasc"required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -146,66 +153,14 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Tipo</label>
                                     <div class="col-sm-6">
-                                        <input type="radio" id="gestr" value="Gestor de Projetos" name="tipo" 
-                                               onclick="
-                                                       if (document.getElementById('pesq').disabled == false) {
-                                                           document.getElementById('pesq').disabled = true
-                                                       }
-                                                       if (document.getElementById('comp').disabled == false) {
-                                                           document.getElementById('comp').disabled = true
-                                                       }
-                                                       if (document.getElementById('inov').disabled == false) {
-                                                           document.getElementById('inov').disabled = true
-                                                       }
-                                                       if (document.getElementById('manu').disabled == false) {
-                                                           document.getElementById('manu').disabled = true
-                                                       }
-                                                       if (document.getElementById('pequ').disabled == false) {
-                                                           document.getElementById('pequ').disabled = true
-                                                       }"required/> Gestor de Projetos<br>
-                                        <input type="radio" id="avalid" value="Avaliador de Projetos" name="tipo" onclick="
-                                                if (document.getElementById('pesq').disabled == true) {
-                                                    document.getElementById('pesq').disabled = false
-                                                }
-                                                if (document.getElementById('comp').disabled == true) {
-                                                    document.getElementById('comp').disabled = false
-                                                }
-                                                if (document.getElementById('inov').disabled == true) {
-                                                    document.getElementById('inov').disabled = false
-                                                }
-                                                if (document.getElementById('manu').disabled == true) {
-                                                    document.getElementById('manu').disabled = false
-                                                }
-                                                if (document.getElementById('pequ').disabled == true) {
-                                                    document.getElementById('pequ').disabled = false
-                                                }"/> Avaliador de Projetos<br>
-                                        <input type="radio" id="financ" value="Financiador Acadêmico" name="tipo" 
-                                               onclick="
-                                                       if (document.getElementById('pesq').disabled == false) {
-                                                           document.getElementById('pesq').disabled = true
-                                                       }
-                                                       if (document.getElementById('comp').disabled == false) {
-                                                           document.getElementById('comp').disabled = true
-                                                       }
-                                                       if (document.getElementById('inov').disabled == false) {
-                                                           document.getElementById('inov').disabled = true
-                                                       }
-                                                       if (document.getElementById('manu').disabled == false) {
-                                                           document.getElementById('manu').disabled = true
-                                                       }
-                                                       if (document.getElementById('pequ').disabled == false) {
-                                                           document.getElementById('pequ').disabled = true
-                                                       }"/> Financiador Acadêmico<br>
+                                        <input type="radio" id="usrpublic" value="Usuário Público" name="tipo" 
+                                               required/> Usuário Público<br>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">Categoria</label>
+                                    <label  class="col-sm-2 control-label"></label>
                                     <div class="col-sm-6" >
-                                        <input type="radio" id="pesq" value="Pesquisa" name="categoria" required/> Pesquisa<br>
-                                        <input type="radio" id="comp" value="Competição Tecnológica" name="categoria" /> Competição Tecnológica<br>
-                                        <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
-                                        <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
-                                        <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" /> Pequenas Obras<br>
+                                        <input type="hidden" id="vazio" value="N/A" name="categoria" checked>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -215,7 +170,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Cadastrar</button>
                                         </div>
                                         <div class="col-md-10">
-                                             
+
                                         </div>
                                     </div>
                                 </div>

@@ -9,8 +9,15 @@
               rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
               rel="stylesheet" type="text/css">
+        <script src="js/jquery-3.1.1.slim.min.js" type="text/javascript"></script>
+        <script src="js/jquery.maskMoney.js" type="text/javascript"></script>
+        <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
         <title>Cadastrar Usuarios</title>
         <script>
+            jQuery(function ($) {
+                $("#nasc").mask("99-99-9999", {placeholder: " "});
+                $("#cpf").mask("999.999.999-99", {placeholder: " "});
+            });
             var cc = 0;
             function confirma_pass() {
                 var pass = document.getElementById("pass").value;
@@ -34,7 +41,7 @@
         include "../financiamento/conexao.php";
         if (isset($_POST["submit"])) {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -71,7 +78,7 @@
             <?php
         } else {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -80,37 +87,38 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Login</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="login" /> 
+                                        <input type="text" class = "form-control" name="login" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Senha</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="pass" class = "form-control" name="senha" /> 
+                                        <input type="password" id="pass" class = "form-control" name="senha" required/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Confirma Senha</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="c_pass" class = "form-control" name="c_senha" onblur="confirma_pass()"/>
+                                        <input type="password" id="c_pass" class = "form-control" name="c_senha" onblur="confirma_pass()" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nome completo</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="nome" />
+                                        <input type="text" class = "form-control" name="nome" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">CPF</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="cpf" />
+                                        <input type="text" class ="form-control" name="cpf" id="cpf" required/>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">País</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="pais" />
+                                        <input type="text" class = "form-control" name="pais" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -122,30 +130,64 @@
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Estado</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="estado" />
+                                        <input type="text" class = "form-control" name="estado" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Endereço</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class = "form-control" name="endereco" />
+                                        <input type="text" class = "form-control" name="endereco" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Data de nascimento</label>
                                     <div class="col-sm-6">
-                                        <input type="date" value="dd-mm-aaaa"class = "form-control" name="nascimento" />
+                                        <input type="date" id="nasc" class = "form-control" name="nascimento" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-6">
-                                        <input type="email" class = "form-control" name="email" />
+                                        <input type="email" class = "form-control" name="email" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-sm-2 control-label">Tipo</label>
                                     <div class="col-sm-6">
+                                        <input type="radio" id="adm" value="Administrador" name="tipo" 
+                                               onclick="
+                                                       if (document.getElementById('pesq').disabled == false) {
+                                                           document.getElementById('pesq').disabled = true
+                                                       }
+                                                       if (document.getElementById('comp').disabled == false) {
+                                                           document.getElementById('comp').disabled = true
+                                                       }
+                                                       if (document.getElementById('inov').disabled == false) {
+                                                           document.getElementById('inov').disabled = true
+                                                       }
+                                                       if (document.getElementById('manu').disabled == false) {
+                                                           document.getElementById('manu').disabled = true
+                                                       }
+                                                       if (document.getElementById('pequ').disabled == false) {
+                                                           document.getElementById('pequ').disabled = true
+                                                       }" required/> Administrador<br>
+                                        <input type="radio" id="usrpublic" value="Usuário Público" name="tipo" 
+                                               onclick="
+                                                       if (document.getElementById('pesq').disabled == false) {
+                                                           document.getElementById('pesq').disabled = true
+                                                       }
+                                                       if (document.getElementById('comp').disabled == false) {
+                                                           document.getElementById('comp').disabled = true
+                                                       }
+                                                       if (document.getElementById('inov').disabled == false) {
+                                                           document.getElementById('inov').disabled = true
+                                                       }
+                                                       if (document.getElementById('manu').disabled == false) {
+                                                           document.getElementById('manu').disabled = true
+                                                       }
+                                                       if (document.getElementById('pequ').disabled == false) {
+                                                           document.getElementById('pequ').disabled = true
+                                                       }"/> Usuário Público<br>
                                         <input type="radio" id="gestr" value="Gestor de Projetos" name="tipo" 
                                                onclick="
                                                        if (document.getElementById('pesq').disabled == false) {
@@ -195,7 +237,7 @@
                                                        }
                                                        if (document.getElementById('pequ').disabled == false) {
                                                            document.getElementById('pequ').disabled = true
-                                                       }"/> Financiador Acadêmico<br>
+                                                       }" required/> Financiador Acadêmico<br>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -206,6 +248,7 @@
                                         <input type="radio" id="inov" value="Inovação no Ensino" name="categoria" /> Inovação no Ensino<br>
                                         <input type="radio" id="manu" value="Manutenção e Reforma" name="categoria" /> Manutenção e Reforma<br>
                                         <input type="radio" id="pequ" value="Pequenas Obras" name="categoria" /> Pequenas Obras<br>
+                                        <input type="hidden" id="vazio" value="N/A" name="categoria" checked>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -215,7 +258,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Cadastrar</button>
                                         </div>
                                         <div class="col-md-10">
-                                             
+
                                         </div>
                                     </div>
                                 </div>

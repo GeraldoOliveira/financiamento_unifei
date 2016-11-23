@@ -61,7 +61,7 @@
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $cat = $row['categoria_projeto'];
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

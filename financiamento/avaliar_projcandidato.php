@@ -26,7 +26,7 @@
             $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'candidato' AND cod_projeto =" . $_POST['cod'] . "";
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -74,7 +74,9 @@
                                                 <img src="imagens/<?php echo $row['imagem_projeto']; ?>"height="200px" width="200px">
                                             </td>
                                             <td>
-                                                <?php echo $row['video_projeto']; ?>
+                                                <iframe class="embed-responsive-item" src="<?php echo $row['video_projeto']; ?>"
+                                                        allowfullscreen=""  height= "300px" width="100%"  frameborder="0" class="img-responsive">
+                                                </iframe>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -87,7 +89,7 @@
             <?php
         } else {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -123,7 +125,7 @@
                                             <button type="submit" name="submit" class="btn btn-primary">Localizar</button>
                                         </div>
                                         <div class="col-md-10">
-                                             
+
                                         </div>
                                     </div>
                                 </div>

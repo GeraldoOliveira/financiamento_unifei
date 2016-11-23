@@ -21,7 +21,7 @@
         $sql = "DELETE FROM projeto_candidato WHERE cod_projeto = " . $cod . "";
         mysqli_query($con, $sql);
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

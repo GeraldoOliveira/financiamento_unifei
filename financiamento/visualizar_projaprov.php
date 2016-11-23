@@ -24,7 +24,7 @@
 
         $result = mysqli_query($con, $sql); /* executa a query */
         ?>
-        <div class="section" style="min-height: 600px">
+        <div class="section" style="min-height: 450px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -85,11 +85,15 @@
                             </table>
                         </fieldset>
                         <div class="row">
+                            <?php if($_SESSION['tipo'] == "Financiador Acadêmico" || $_SESSION['tipo'] == "Usuário Público"){?>
                             <div class="col-md-2">
                                 <a class="btn btn-primary" href="financiar_projeto.php?codigo=<?php echo $cod; ?>">Financiar projeto</a>
                             </div>
                             <?php
-                                if ($_SESSION['tipo'] == "Gestor de Projetos") {
+                                }
+                            ?>
+                            <?php
+                            if ($_SESSION['tipo'] == "Gestor de Projetos") {
                             ?>
                                 <div class="col-md-2">
                                     <a class="btn btn-primary" href="definir_restricoes.php?codigo=<?php echo $cod; ?>">Definir restrições</a>

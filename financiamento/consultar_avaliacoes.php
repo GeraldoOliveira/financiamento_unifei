@@ -21,7 +21,7 @@
             $sql = "SELECT * FROM avaliacao WHERE cod_projeto = " . $_POST['cod'] . "";
             $result = mysqli_query($con, $sql); /* executa a query */
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -57,7 +57,7 @@
                 <?php
             } else {
                 ?>
-                <div class="section" style="min-height: 600px">
+                <div class="section" style="min-height: 450px">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">

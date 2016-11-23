@@ -21,17 +21,17 @@
             $dat = date_create($_POST['data']);
             $data = date_format($dat, "Y-m-d");
             if ($_POST['nome_proj'] == "" && $_POST['data'] != "") {
-                $sql = "SELECT * FROM financiamento WHERE data = '" . $data . "' ORDER BY nome";
+                $sql = "SELECT * FROM financiamento WHERE data = '" . $data . "', financiador = '" . $_SESSION['nome'] . "' ORDER BY nome";
                 $result = mysqli_query($con, $sql);
             } else if ($_POST['nome_proj'] != "" && $_POST['data'] == "") {
-                $sql = "SELECT * FROM financiamento WHERE nome = '" . $_POST['nome_proj'] . "' ORDER BY nome, data";
+                $sql = "SELECT * FROM financiamento WHERE nome = '" . $_POST['nome_proj'] . "', financiador = '" . $_SESSION['nome'] . "' ORDER BY nome, data";
                 $result = mysqli_query($con, $sql);
             } else {
-                $sql = "SELECT * FROM financiamento ORDER BY nome";
+                $sql = "SELECT * FROM financiamento WHERE financiador = '" . $_SESSION['nome'] . "' ORDER BY nome";
                 $result = mysqli_query($con, $sql);
             }
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -70,7 +70,7 @@
             <?php
         } else {
             ?>
-            <div class="section" style="min-height: 600px">
+            <div class="section" style="min-height: 450px">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
