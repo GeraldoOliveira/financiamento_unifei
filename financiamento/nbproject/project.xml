@@ -5,5 +5,10 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>financiamento</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Ativado</word>
+            <word>Avaliação</word>
+            <word>Critério</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

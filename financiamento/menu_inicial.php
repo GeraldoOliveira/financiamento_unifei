@@ -1,40 +1,109 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Financiamento UNIFEI</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+              rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+              rel="stylesheet" type="text/css">
     </head>
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <br><h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seja bem-vindo</h4>
-        <br>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Usuário
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="cadastrar_usuario.php">Adicionar Usuário</a></li>
-                <li><a href="consultar_usuario.php">Listar Usuários</a></li>
-                <li><a href="alterar_usuario.php">Alterar Usuários</a></li>
-                <li><a href="desativar_usuario.php">Desativar seu usuário</a></li>
-            </ul>
+        <?php
+        session_start();
+        include_once 'conexao.php';
+        include_once 'header.php';
+        include_once 'menu.php';
+        $sql = "SELECT * FROM projeto_candidato WHERE status_projeto = 'aprovado'";
+        $result = mysqli_query($con, $sql); /* executa a query */
+        $i = 1;
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $vetor[$i] = $row['video_projeto'];
+            $vetor2[$i] = $row['nome_projeto'];
+            $vetor3[$i] = $row['valor_projeto'];
+            $vetor4[$i] = $row['financiado_projeto'];
+            $vetor5[$i] = $row['cod_projeto'];
+            $i++;
+        }
+        $var1 = rand(1, count($vetor));
+        $var2 = rand(1, count($vetor));
+        $var3 = rand(1, count($vetor));
+        if (count($vetor) >= 3) {
+            while ($var1 == $var2 || $var1 == $var3 || $var2 == $var3) {
+                if ($var1 == $var2) {
+                    $var1 = rand(1, count($vetor));
+                } else if ($var1 == $var3) {
+                    $var1 = rand(1, count($vetor));
+                } else {
+                    $var2 = rand(1, count($vetor));
+                }
+            }
+        } else if (count($vetor) == 2) {
+            while ($var1 == $var2) {
+                $var1 = rand(1, count($vetor));
+            }
+        }
+        $porcento1 = (($vetor4[$var1] / $vetor3[$var1]) * 100);
+        $porcento2 = (($vetor4[$var2] / $vetor3[$var2]) * 100);
+        $porcento3 = (($vetor4[$var3] / $vetor3[$var3]) * 100);
+        ?>
+        <div class="section" style="min-height: 450px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <br><h1>Seja bem-vindo <?php echo $_SESSION["nome"]; ?></h1>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <h3>Veja alguns projetos.</h3>
+                        <?php if (count($vetor) >= 1) { ?>
+                            <div class="col-md-4">
+                                <h4> <a href="visualizar_projaprov.php?codigo=<?php echo $vetor5[$var1]; ?>"><?php echo $vetor2[$var1]; ?></a> </h4>
+                                <iframe class="embed-responsive-item" src="<?php echo $vetor[$var1]; ?>"
+                                        allowfullscreen=""  height= "300px" width="100%"  frameborder="0" class="img-responsive">
+                                </iframe>
+                                <h5> Andamento do Projeto </h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width:<?php echo $porcento1; ?>%"></div>
+                                </div>
+                                <h5>R$<?php echo $vetor4[$var1]; ?> / R$<?php echo $vetor3[$var1]; ?></h5>
+                            </div>
+                        <?php } ?>
+                        <?php if (count($vetor) >= 2) { ?>
+                            <div class="col-md-4">
+                                <h4> <a href="visualizar_projaprov.php?codigo=<?php echo $vetor5[$var2]; ?>"><?php echo $vetor2[$var2]; ?></a> </h4>
+                                <iframe  class="embed-responsive-item" src="<?php echo $vetor[$var2]; ?>"
+                                         allowfullscreen=""  height="300px" width="350px"  frameborder="0">
+                                </iframe>
+                                <h5> Andamento do Projeto </h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width:<?php echo $porcento2; ?>%"></div>
+                                </div>
+                                <h5>R$<?php echo $vetor4[$var2]; ?> / R$<?php echo $vetor3[$var2]; ?></h5>
+                            </div>
+                        <?php } ?>
+                        <?php if (count($vetor) >= 3) { ?>
+                            <div class="col-md-4">
+                                <h4> <a href="visualizar_projaprov.php?codigo=<?php echo $vetor5[$var3]; ?>"><?php echo $vetor2[$var3]; ?></a> </h4>
+                                <iframe  class="embed-responsive-item" src="<?php echo $vetor[$var3]; ?>"
+                                         allowfullscreen=""  height="300px" width="350px"  frameborder="0">
+                                </iframe>
+                                <h5> Andamento do Projeto </h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width:<?php echo $porcento3; ?>%"></div>
+                                </div>
+                                <h5>R$<?php echo $vetor4[$var3]; ?> / R$<?php echo $vetor3[$var3]; ?></h5>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Projeto Candidato
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="cadastrar_projcandidato.php">Adicionar Projeto Candidato</a></li>
-                <li><a href="listar_projcandidato.php">Listar Projetos Candidatos</a></li>
-                <li><a href="alterar_projcandidato.php">Alterar Projeto Candidato</a></li>
-                <li><a href="excluir_projeto.php">Excluir Projeto Candidato</a></li>
-            </ul>
-        </div>
+        <?php
+        include_once 'footer.php';
+        ?>
     </body>
 </html>

@@ -2,9 +2,14 @@
 <html>
     <head>
         <title>Financiamento UNIFEI</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+              rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+              rel="stylesheet" type="text/css">
         <script>
             var cc = 0;
             function confirma_pass() {
@@ -22,50 +27,85 @@
         </script>
     </head>
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
         <?php
         include "../financiamento/conexao.php";
+        include_once 'header.php';
         if (isset($_POST["submit"])) {
-        $pesquisa = $_POST["login"];
-        $sql = "SELECT nome_completo ,`senha` FROM `usuario` WHERE login = '" . $pesquisa . "'";
-        $result = mysqli_query($con, $sql); /* executa a query */
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $pass = $_POST["senha"];
-        $bdpass = $row['senha'];
-        $user = $row['nome_completo'];
-        if($pass == $bdpass){
-            header("Location:menu_inicial.php")
-            ?><h4>Login realizado com sucesso. Seja bem-vindo <?php echo $user; ?>.</h4>
-        <?php }else
-            ?>  Senha ou login incorreto. Tente novamente.<br><br>
-            <a href="index.php">Voltar</a>
+            $pesquisa = $_POST["login"];
+            $sql = "SELECT nome_completo , senha , status , tipo FROM `usuario` WHERE login = '" . $pesquisa . "'";
+            $result = mysqli_query($con, $sql); /* executa a query */
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $status = $row['status'];
+            $pass = $_POST["senha"];
+            $bdpass = $row['senha'];
+            $user = $row['nome_completo'];
+            $tipo = $row['tipo'];
+            if ($pass == $bdpass && $status == 0) {
+                session_start();
+                $_SESSION['nome'] = $user;
+                $_SESSION['login'] = $pesquisa;
+                $_SESSION['tipo'] = $tipo;
+                header("Location:reativa.php");
+            } else if ($pass == $bdpass && $status == 1) {
+                session_start();
+                $_SESSION['nome'] = $user;
+                $_SESSION['login'] = $pesquisa;
+                $_SESSION['tipo'] = $tipo;
+                header("Location:menu_inicial.php");
+            } else {
+                ?>
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4> Senha ou login incorreto. Tente novamente.</h4><br><br>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <a class="btn btn-primary" href="index.php">Voltar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php
-        
-        }else{ ?>
-        <h2 style="margin:0">&nbsp;Bem-vindo ao Financiamento Unifei.</h2><br>
-        <div style="font-size: 14"><strong> &nbsp;&nbsp;&nbsp;Por favor, realize o login.</strong></div><br>
-        <div>
-            <form action="index.php" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <label for="inputCode" class="col-sm-1 control-label">Login</label>
-                    <div class="col-sm-1">
-                        <input type="text" class="form-group" id="inputCode" name="login" >
+            }
+        } else {
+            ?>
+            <div class="section" style="min-height: 450px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 style="margin:0">Bem-vindo ao Financiamento Unifei.</h2><br>
+                            <div style="font-size: 14"><strong>Por favor, realize o login.</strong></div><br>
+                            <div>
+                                <form action="index.php" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputCode" class="col-sm-1 control-label">Login</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-group" id="inputCode" name="login" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword" class= "col-sm-1 control-label">Senha</label>
+                                        <div class="col-sm-1">
+                                            <input type="password" class="form-group" id ="inputPassword" name="senha">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-1 col-sm-10">
+                                            <br><button type="submit" name="submit" value="LoginFuncionario" class="btn btn-primary" >Logar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword" class= "col-sm-1 control-label">Senha</label>
-                    <div class="col-sm-1">
-                        <input type="password" class="form-group" id ="inputPassword" name="senha">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-1 col-sm-10">
-                        <br><button type="submit" name="submit" value="LoginFuncionario" class="btn btn-primary" >Logar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <?php }     ?>
+            </div>
+            <?php
+        }
+        include_once 'footer.php';
+        ?>
     </body>
 </html>
