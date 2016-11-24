@@ -33,7 +33,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <?php
+                            <?php 
                             $sql = "INSERT INTO projeto_candidato VALUES (' ','" . $_POST["nome_proj"] . "','" .
                                     $_POST["categoria"] . "'," . $_POST["duracao"] . ",'" . $_POST["valor"] .
                                     "','candidato','" . $_POST['descricao'] . "','" . $novo_nome . "','" . $_POST['video'] . "')";
