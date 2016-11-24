@@ -36,7 +36,7 @@
                             ?>
                             <h3>As restrições foram definidas com sucesso.</h3><br><br>
                             <div class="row">
-                                <div class="col-md-1">
+                                <div class="col-md-1"> 
                                     <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                                 </div>
                                 <div class="col-md-11">
