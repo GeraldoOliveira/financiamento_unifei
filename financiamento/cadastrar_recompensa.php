@@ -36,7 +36,7 @@
                                 mysqli_close($con);
                                 ?>
                                 <h3>A recompensa foi cadastrada com sucesso.</h3><br><br>
-                                <div class="row">
+                                <div class="row"> 
                                     <div class="col-md-1">
                                         <a class="btn btn-primary" href="menu_inicial.php">Voltar</a>
                                     </div>
